@@ -1,0 +1,14 @@
+--- original/backend/app/services/renderer.py
++++ standalone/backend/app/services/renderer.py
+@@ -31,9 +31,9 @@
+         preset = PRESETS[platform] if platform else {'width': 1080, 'height': 1080, 'preset_id': 'shared-square-v1'}
+         width, height = preset['width'], preset['height']
+         background = b64encode(self.assets.read(background_id)).decode()
+-        font_path = ROOT / 'frontend/node_modules/@fontsource/inter/files/inter-latin-600-normal.woff2'
++        font_path = ROOT / 'assets/fonts/inter-latin-600-normal.woff2'
+         if not font_path.is_file():
+-            raise ProviderError('Poster font is missing. Install frontend dependencies before rendering.')
++            raise ProviderError('Poster font is missing. Restore assets/fonts/inter-latin-600-normal.woff2 before rendering.')
+         font = b64encode(font_path.read_bytes()).decode()
+         layout_css = template_css(request.template_id) + theme_css(request.background_theme, request.template_id) + platform_css(platform)
+         rendered = []

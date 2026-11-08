@@ -1,0 +1,1065 @@
+{
+  "Source": "D:\\Projects\\AI_Social_Media",
+  "CapturedAt": "2026-11-08T13:57:21.6808068+05:30",
+  "GitHead": "7b220c9d6b3946ceee583e202cb49da3dd2085ea",
+  "GitStatus": [],
+  "Scope": "Tracked file bytes only; ignored runtime data, environment and dependencies are not covered by this manifest.",
+  "Files": [
+    {
+      "Path": ".env.example",
+      "SHA256": "EFF9DCCC4B526CA8D029E6B80BFE7DF7A6B0DD95D64E24C6235F396133FFD0FC"
+    },
+    {
+      "Path": ".gitignore",
+      "SHA256": "9937FE62B55DD475CA78FA33A2F92F3EC4BDC5CA84B063F08E063E89DC877D26"
+    },
+    {
+      "Path": "AGENTS.md",
+      "SHA256": "FE2BCE3C70983F09132113AEC539137D53A53F5939D0E4CB6826787F58BAE469"
+    },
+    {
+      "Path": "README.md",
+      "SHA256": "BCB42BEF1A4A4B9562BE5DBB6E8C3F92EF373FAA35948A9E48D29D9EA18B0FB2"
+    },
+    {
+      "Path": "backend/__init__.py",
+      "SHA256": "434FDFDAD1DA83AC97CA1E7B4965F75F4EDF9CF1B17F4FBF370E849442978DDC"
+    },
+    {
+      "Path": "backend/alembic.ini",
+      "SHA256": "77720A47A1CA4DA8A4603B94A6DEE27DA971C92D645BE56C8F281DD3364E1444"
+    },
+    {
+      "Path": "backend/app/__init__.py",
+      "SHA256": "AB3B6829784EC75E5515F6CBD47B4629B31282956100B99168EF4262494AEE15"
+    },
+    {
+      "Path": "backend/app/agents/__init__.py",
+      "SHA256": "C99A1687F8A34CDD167B690FD9FE6906EF6D1D5E31A08CADC92A81C799D91E0F"
+    },
+    {
+      "Path": "backend/app/agents/content.py",
+      "SHA256": "60F7CC0D5022912318B9D5724360D7077F4B38E93FCD81B63E681484DAE9378F"
+    },
+    {
+      "Path": "backend/app/agents/coordinator.py",
+      "SHA256": "5F6A90615A3836B21A671B44031CC630E1094B7FEEB6D16477B3815EC13C3595"
+    },
+    {
+      "Path": "backend/app/agents/publishing.py",
+      "SHA256": "5E73DD05DF322B6843C1EE2CECF5F40FC1C144777E947DEE1727EFE936DD2E4F"
+    },
+    {
+      "Path": "backend/app/agents/research.py",
+      "SHA256": "D725233486F2778DDF3D4ACC8248485FF300F0C22148282795AA5DE6DC1879BD"
+    },
+    {
+      "Path": "backend/app/agents/revision.py",
+      "SHA256": "30F54BBFA04511EA444EB029AFF4213827A21D459B2259C0938E42584035F529"
+    },
+    {
+      "Path": "backend/app/approval_api.py",
+      "SHA256": "0417B6392280E52A2F40736DEA13D94BEBB07BC1820C077D470E3D0E6C0B15CE"
+    },
+    {
+      "Path": "backend/app/config.py",
+      "SHA256": "5FA3ABF26F9A91C1E50FCEB633C53B735BE2EF1B182B101C6205B236FBC431A1"
+    },
+    {
+      "Path": "backend/app/content_api.py",
+      "SHA256": "9A620E179CEE07F40B0E03ABA427CB4A5EE5C2B50D6AFB38EE00D15F967AB1BF"
+    },
+    {
+      "Path": "backend/app/contracts.py",
+      "SHA256": "E529B1404DDC32D3578DAF9F8994418BF62476CE613FB2C8B007FB38F4EF57D6"
+    },
+    {
+      "Path": "backend/app/coordinator_api.py",
+      "SHA256": "3536DA1A981F4798D5732763B21990D72272140A0037D82EEDF3F5279D5A6544"
+    },
+    {
+      "Path": "backend/app/coordinator_contracts.py",
+      "SHA256": "89C0AA0C9994A3AF51829E0BF15148B77D43BB9C4DCC9CD7A4DD307F1C14A40A"
+    },
+    {
+      "Path": "backend/app/coordinator_workflow.py",
+      "SHA256": "E81C53F5C39B00ECD3A10EEC4821448AEE3404BC4CCC157962E3EEA895C1FAEE"
+    },
+    {
+      "Path": "backend/app/database.py",
+      "SHA256": "AD517A6471B8594CF4200B5AB99AC738AC20C7B94190A99562900491D1313508"
+    },
+    {
+      "Path": "backend/app/facebook_api.py",
+      "SHA256": "CCEE935F9ECD791ECAAEFD7997F56274A7BCA163A81802DF7BE3079106CE86C8"
+    },
+    {
+      "Path": "backend/app/facebook_contracts.py",
+      "SHA256": "7DF91B40503EBB4A62CF8D1B1CC25B625E8AB0713161B9E76DF39A3BD7C1285C"
+    },
+    {
+      "Path": "backend/app/instagram_api.py",
+      "SHA256": "91B03415CC1D9E5AF405535D53A079930BAA5E91B46521FCC576A9ED82682D97"
+    },
+    {
+      "Path": "backend/app/instagram_contracts.py",
+      "SHA256": "9416F976F7910814F82EAB61DB0055B2791A00D4590CFE1E1B6FF060DE4B626F"
+    },
+    {
+      "Path": "backend/app/main.py",
+      "SHA256": "DC8A8D969543313CAE4D6696104C58E43EB7F2B12B87FCC7B7E5DC6B92C6CA2E"
+    },
+    {
+      "Path": "backend/app/manual_api.py",
+      "SHA256": "974A63C7D9E731A49099F0DE53B5585BFD67DD80481438994073FA5FBED86DE4"
+    },
+    {
+      "Path": "backend/app/manual_contracts.py",
+      "SHA256": "9242C6897FE6F76DF04B7BC94CED9E69376A34BBAA5AD183E7A5F8555CC76DEC"
+    },
+    {
+      "Path": "backend/app/models.py",
+      "SHA256": "9D3333F61EE5FB0F825DFE5088FF67891C235F0AB3A839D56DB7505F2556B9A9"
+    },
+    {
+      "Path": "backend/app/publishing_api.py",
+      "SHA256": "7E3D6B3D3E4D1EADA7EFA69B71F0F2D7CDE27E9B54F3AF0DF2143C71A314CE07"
+    },
+    {
+      "Path": "backend/app/publishing_contracts.py",
+      "SHA256": "153A9341C323D8FAAE7A532313BCF0829439FEAEA08A5FC23B1437EA52EB439F"
+    },
+    {
+      "Path": "backend/app/recovery_contracts.py",
+      "SHA256": "8F54B81DA647407195D1E3F8B7180199FBCECCFC5DD0E5E16ACF494CBAF6FCC5"
+    },
+    {
+      "Path": "backend/app/reports.py",
+      "SHA256": "C342F255A1082669EAE6887E38D014684CF663C06E27F51884968600EA2CA56C"
+    },
+    {
+      "Path": "backend/app/research_api.py",
+      "SHA256": "428ECF1A42E38461C2ED4A473063D7BC2486D437AA5E8B9637FF9FD17A9E7830"
+    },
+    {
+      "Path": "backend/app/research_contracts.py",
+      "SHA256": "8D93156E4E148487FB18ABAF4BC847386AE4C2A37BE67CB5602F9D4C63626AE0"
+    },
+    {
+      "Path": "backend/app/research_workflow.py",
+      "SHA256": "9902500AC0F3FF85B387270705B0B5CCB7019828F68C94EBA2A2C46AE0A45D7E"
+    },
+    {
+      "Path": "backend/app/scheduling_contracts.py",
+      "SHA256": "76DFAA018245034C0E7CC6B1FECA4598D53A80FB9B466443F4216CC6C538A39D"
+    },
+    {
+      "Path": "backend/app/services/__init__.py",
+      "SHA256": "7D7190D64C1E98906BC628A132EC33598910E926F32D63694DB47A52415DEECB"
+    },
+    {
+      "Path": "backend/app/services/artwork.py",
+      "SHA256": "EEDAC0E0E5BFC532E8371F915F72DD06086F1939EE2B6A490B706B35F1DC77D8"
+    },
+    {
+      "Path": "backend/app/services/assets.py",
+      "SHA256": "C81181EFBFB07F9162D77ED5A364CA3A9B47B72A9A9ACDEEB9C2A52417E60536"
+    },
+    {
+      "Path": "backend/app/services/background_check.py",
+      "SHA256": "393D172FCE9209F5C7714019A9F478F7F5FFC99F9746C6C1E217EA551237951D"
+    },
+    {
+      "Path": "backend/app/services/backup.py",
+      "SHA256": "E073970FACB9BA4B171DAA9D1E212E3EA805BD8DF553E604D42892E6DAE60A00"
+    },
+    {
+      "Path": "backend/app/services/cloudinary_media.py",
+      "SHA256": "FD171D3CF00A99CAD1F9EA1A0803525B27C09A0D622BEF8AFECB5E01C71E151B"
+    },
+    {
+      "Path": "backend/app/services/content_deletion.py",
+      "SHA256": "78BF9C6783297B053484365A2C79D857AF12A9C0D7FBA0155521122AF6A81121"
+    },
+    {
+      "Path": "backend/app/services/data_lock.py",
+      "SHA256": "1E516D1ABFE559C1BB1F33C2A054240D1ABE26B08E2D4B21DDE1CF7549340B22"
+    },
+    {
+      "Path": "backend/app/services/facebook_delivery.py",
+      "SHA256": "89F347091B7C50D80B538D023D81D2F21AD410E22D5037CDCB1FA351E323C1CB"
+    },
+    {
+      "Path": "backend/app/services/facebook_publishing.py",
+      "SHA256": "C684FDCE94FFB279A94FBB3DF1B9D1698D1282D363828B566A9CFF193D8B4F23"
+    },
+    {
+      "Path": "backend/app/services/instagram_delivery.py",
+      "SHA256": "D1D28407298C44EB1282D96536533E4FD10B1F3D55EB12B99C34ED7568BB59E7"
+    },
+    {
+      "Path": "backend/app/services/instagram_media.py",
+      "SHA256": "B45DEAD89107A871AB17F59084E0EF241A663A6013311987999728E09866EE34"
+    },
+    {
+      "Path": "backend/app/services/instagram_publishing.py",
+      "SHA256": "F8E09AED84496EFEB387DAFDBA22B0A1FDC15A762FF0527FF04D8E2867BDE8FB"
+    },
+    {
+      "Path": "backend/app/services/live_scheduling.py",
+      "SHA256": "04EE0897A62673F1BA5222E48908C4703B8E27BD95D580F8C40C816B802D8B26"
+    },
+    {
+      "Path": "backend/app/services/local_security.py",
+      "SHA256": "5F1F46CF69F3A6B32BACD93600E8055820D90E4D568DF7FA1721797C04A1A741"
+    },
+    {
+      "Path": "backend/app/services/meta_connection.py",
+      "SHA256": "DF0226561FF06DC97945B237C1580F5E210DE1381F1A34E0B8B54E9F05B776E4"
+    },
+    {
+      "Path": "backend/app/services/providers.py",
+      "SHA256": "37A2BD2B1477E6C47C43E8CDD5ACDA9405C8D0430B91C4E973897CDBEA870C29"
+    },
+    {
+      "Path": "backend/app/services/publication_recovery.py",
+      "SHA256": "B1969CD0B11A02065A2F90F12E2673D1ADA101ED94ADC9DCC4569A50649A9B5B"
+    },
+    {
+      "Path": "backend/app/services/publishing.py",
+      "SHA256": "05DC6F4725FD868D6C696D2404C0D10D609BD4E483D84D0FABE6F7BBE3323409"
+    },
+    {
+      "Path": "backend/app/services/quality.py",
+      "SHA256": "BBEE98A0CFDE26C20A3B1B4E9D73C09AB7DC03B9A6DD8EEA66461B2F558A1C47"
+    },
+    {
+      "Path": "backend/app/services/renderer.py",
+      "SHA256": "4FA336985CF13518F39F4DE41D23D1E2974460C475EF348338B70B526BCB4D22"
+    },
+    {
+      "Path": "backend/app/services/research_sources.py",
+      "SHA256": "E3D98F89022D53659D15E896533AAE38E759B1334822AD9436752733E5360C4C"
+    },
+    {
+      "Path": "backend/app/services/text_budget.py",
+      "SHA256": "2DEE624DE79DCED61D7C874201F1CEA65684DDC7359F7D1DCE22CD1CB76521CE"
+    },
+    {
+      "Path": "backend/app/services/visual_direction.py",
+      "SHA256": "8CC4E86FEB0F48D62052D400560ECBCAF6A0B0FC1065E04F78FBD770A1430508"
+    },
+    {
+      "Path": "backend/app/social_api.py",
+      "SHA256": "A793902A386F01D554F628722F35ADD033F4D33EAE41DA11A25F09C2B49458B2"
+    },
+    {
+      "Path": "backend/app/social_contracts.py",
+      "SHA256": "9570A5C718A4E21D472CC1D26F87718C6F7FD498DB39408F41C5B2D11D17096D"
+    },
+    {
+      "Path": "backend/app/templates/__init__.py",
+      "SHA256": "4ACA0B9ABC0FF8CE6CF7DB1CC99FDFA08FC17DE5B6CE73C977362DAA2B0A6E5F"
+    },
+    {
+      "Path": "backend/app/templates/bulletin-v1.css",
+      "SHA256": "819397E18B477930ECD459AC0A23B729CDE7DBC142213B72C4CE5EDADDA2DA6B"
+    },
+    {
+      "Path": "backend/app/templates/editorial-v1.css",
+      "SHA256": "AC46D595B134991A1EF2A853D04B298F222BA6A7B52F37E62DA2F8965014D384"
+    },
+    {
+      "Path": "backend/app/templates/platforms.py",
+      "SHA256": "5CD6C372EEE514C7CA3FE0406E2339C1AE3D1153CF9AE106C41C87229C1D86AC"
+    },
+    {
+      "Path": "backend/app/templates/spotlight-v1.css",
+      "SHA256": "5E0BCFC0F70E4017BD6F93AD9DCA66EC35604CB91DF4E5280DA2B988D344DDEC"
+    },
+    {
+      "Path": "backend/app/templates/themes.py",
+      "SHA256": "CCE31A3444B5CAD59B57BD39D6C8C43545C47554715B011FE282B2B087D3CB51"
+    },
+    {
+      "Path": "backend/app/workflow.py",
+      "SHA256": "5C544F1E0BC9DD93D69340B2BA804C5818F19293B020E6C731BAE23D0BDED115"
+    },
+    {
+      "Path": "backend/migrations/env.py",
+      "SHA256": "7EAB609B859293E14C2DF77DB1066BD4A54562614FC32C532F25F6FEBD2C33F6"
+    },
+    {
+      "Path": "backend/migrations/versions/0001_foundation.py",
+      "SHA256": "60A8BF87BBC246566943078EB5899EBD406FBCC99A22E8C138CDD9D2284F9A93"
+    },
+    {
+      "Path": "backend/migrations/versions/0002_content_workflow.py",
+      "SHA256": "EBB0F2D02A98DE1A4D4DFF0EEA004694C97BCADA221907C65D485280A63C4065"
+    },
+    {
+      "Path": "backend/migrations/versions/0003_immutable_versions.py",
+      "SHA256": "C7B88BC26FA52DBF594ED58DC8097D7A94CAC61DF65DEC83C42644F2A6050109"
+    },
+    {
+      "Path": "backend/migrations/versions/0004_research_jobs.py",
+      "SHA256": "841CFFE761A90C7A111260EE2F00BA92AA2021EC0B5674367826EE3FB841F878"
+    },
+    {
+      "Path": "backend/migrations/versions/0005_content_trash.py",
+      "SHA256": "2C0DFDD58783639FB5CBEE7F8D7BAC058DF78A4677977A9D2CF376A3BFA7334C"
+    },
+    {
+      "Path": "backend/migrations/versions/0006_permanent_deletion.py",
+      "SHA256": "C50A5B9EA80B327DCEFE92BA67D097A7678694DCA7FAE8EF41FA0D02FFB601CF"
+    },
+    {
+      "Path": "backend/migrations/versions/0007_coordinator.py",
+      "SHA256": "ADD7CD6F6B8AF189E52CE4AADF4A060383EA9D568ED48333B23BE09E3AFE8103"
+    },
+    {
+      "Path": "backend/migrations/versions/0008_approvals.py",
+      "SHA256": "63671BEF2AE1FD1C8231DE56601AE98D0B1A77BB52C644E5D2C1055E4492AA10"
+    },
+    {
+      "Path": "backend/migrations/versions/0009_publishing.py",
+      "SHA256": "83ACAA11E45BDDAE70DC321389D0818171DE3C92CDDAACC1791401EDCF4566A3"
+    },
+    {
+      "Path": "backend/migrations/versions/0010_meta_connection.py",
+      "SHA256": "B30093050BEE38B3EED03793458BF1F5274FDC2EFC65257C02789EEE2768BDEF"
+    },
+    {
+      "Path": "backend/migrations/versions/0011_meta_connection_attempt.py",
+      "SHA256": "C7A99C997EFC72AE5006377A315DDA9C445487A8DF142A1273FCE4E70CE21F24"
+    },
+    {
+      "Path": "backend/migrations/versions/0012_facebook_publications.py",
+      "SHA256": "32B86E99AF772EE6D57448FA28E55E86B88DB6C25FAF8FC6E17714916F1694D9"
+    },
+    {
+      "Path": "backend/migrations/versions/0013_instagram_publications.py",
+      "SHA256": "AC6F279B6CFED6C6A0F92532CB475E60E925EDEE57C26851EB974134A33F9BC3"
+    },
+    {
+      "Path": "backend/migrations/versions/0014_instagram_carousels.py",
+      "SHA256": "D6342C650821067A69883BADC3B34B57A4FD3A11A4456B5A30A93091B31BDDD2"
+    },
+    {
+      "Path": "backend/migrations/versions/0015_facebook_multi_image.py",
+      "SHA256": "09FB2C98ED9B3CAFC429E639D2B6C94F1CDCD0FAA3323BB92E4565A0D67B8A2D"
+    },
+    {
+      "Path": "backend/migrations/versions/0016_manual_publications.py",
+      "SHA256": "1B696E30DE8D5E6BB114E66221926B76BD8D866CFFE4E5EABEDFD77A416587EF"
+    },
+    {
+      "Path": "backend/migrations/versions/0017_publication_checks.py",
+      "SHA256": "1302619E88477746E14CF3AC106C34F0D5D9625F3B04C2945C65D79694C53A7A"
+    },
+    {
+      "Path": "backend/migrations/versions/0018_live_schedules.py",
+      "SHA256": "2B7F4D14E31571A192606EAE9414E4470A89F497B12F711FDE2CBC13C7BD1622"
+    },
+    {
+      "Path": "backend/openapi.json",
+      "SHA256": "DF00AC3A87E76C03F0C3D9F7363F133622FAA0C9260712821405EDE788025771"
+    },
+    {
+      "Path": "backend/requirements.in",
+      "SHA256": "EECBFA233A6FF73116FC4DF8B484156D8621A38A8A1DF0C4C42941551C3F1953"
+    },
+    {
+      "Path": "backend/requirements.txt",
+      "SHA256": "713C2BD339C8CDC72A246012D3E408D19D3046D6EB5F0BD014524A906C5CE473"
+    },
+    {
+      "Path": "backend/tests/app_fixture.py",
+      "SHA256": "29F7C34814EFDDCDA05291178C6D7BB36280F659A410309C91383FACA2F998C9"
+    },
+    {
+      "Path": "backend/tests/test_approvals.py",
+      "SHA256": "2C2BBB80A37F51B10FFA2F38BD782B59C4931C4469B484CE7729A78CF56F93D6"
+    },
+    {
+      "Path": "backend/tests/test_artwork.py",
+      "SHA256": "7133EA6D0EA04C1CAF87D7E52D382EC066824378B2669BE75791C928381C69B2"
+    },
+    {
+      "Path": "backend/tests/test_backup.py",
+      "SHA256": "4955E9B808684942072458EE941DBB1AF49185552758A14034FF30826D57E7F1"
+    },
+    {
+      "Path": "backend/tests/test_campaign_content.py",
+      "SHA256": "63750492E9FC7F7C266343674D604927982F4F8A08F7E8F27E3CDD3346992A52"
+    },
+    {
+      "Path": "backend/tests/test_cloudinary_folder_setup.py",
+      "SHA256": "0D274700F80ABEE24858E42E5CB2D179814FE31910061D31AA885146E8DAD017"
+    },
+    {
+      "Path": "backend/tests/test_cloudinary_live_check.py",
+      "SHA256": "556DDAC2109EA604B282FB9E9D0EB01CF6F07F0581C00F439F09E558CB5ED505"
+    },
+    {
+      "Path": "backend/tests/test_cloudinary_media.py",
+      "SHA256": "EE2D0618F8C632D7252E23055A1D5C4DBC104BF2297EC6F7A019B7089856D28E"
+    },
+    {
+      "Path": "backend/tests/test_content.py",
+      "SHA256": "97985A7954AE78D8A6C8BDFD9BAB2A6DC3B131BFE611848F231975F39C3E6946"
+    },
+    {
+      "Path": "backend/tests/test_content_trash.py",
+      "SHA256": "1086731FE067B96345EB0FBC3FF036755188002274C03D9D2F9BE68273A727B5"
+    },
+    {
+      "Path": "backend/tests/test_coordinator.py",
+      "SHA256": "793467797822482E4C4A0220ADAE641C550621610D42BECDE5A98BDC275B881B"
+    },
+    {
+      "Path": "backend/tests/test_distinct_creatives.py",
+      "SHA256": "A0813EDDAA301ED9839E8A5E5418A6F312751B9CF6C343E03F1F7F417432ECC7"
+    },
+    {
+      "Path": "backend/tests/test_facebook_delivery.py",
+      "SHA256": "F0A41FA423F1DDCFCEB2DF47206909D072A290A40A1A8286BA954C86DC604BA4"
+    },
+    {
+      "Path": "backend/tests/test_facebook_multi_delivery.py",
+      "SHA256": "A34DCA2BD4C83FA52FB092149D272301058380F2A50A2255F1D49BB07FD02B64"
+    },
+    {
+      "Path": "backend/tests/test_facebook_multi_publishing.py",
+      "SHA256": "1CD01A8B369897A4BADA8290DB58A4E3B620E9351A9C4C672C26420D79ECE917"
+    },
+    {
+      "Path": "backend/tests/test_facebook_publishing.py",
+      "SHA256": "5C87E10DAD116FC8E00E3C759A4A023BA25D420DC998139FACAED0D04B0F3D60"
+    },
+    {
+      "Path": "backend/tests/test_foundation.py",
+      "SHA256": "AC41AD2763EA3F5BE20A171ADF2D68CFB1914085D79218692182469BF1705FFA"
+    },
+    {
+      "Path": "backend/tests/test_hashtags.py",
+      "SHA256": "BA43BBC0465DAA715896A7C617A2A877E70FA27A7364A7A0A9457C3467C86806"
+    },
+    {
+      "Path": "backend/tests/test_instagram_carousels.py",
+      "SHA256": "549C0230D327908C5752A037898090A98249C1FBA82D7DEEEDE64B8B235F712A"
+    },
+    {
+      "Path": "backend/tests/test_instagram_delivery.py",
+      "SHA256": "025A29A9E0DA2BAB18E5C6A2C1E801E23D20F8D9ABD59761535C2BD7AAD7950B"
+    },
+    {
+      "Path": "backend/tests/test_instagram_media.py",
+      "SHA256": "2099F265A31994487FF5FD17942FDFAEA19E9D643F3B75C01C48BFDEB5126F18"
+    },
+    {
+      "Path": "backend/tests/test_instagram_publishing.py",
+      "SHA256": "1C1ED348A5881F6C1DAD4C2E49CB0C96F8AC3B45001DA628483FF1C03C2455F3"
+    },
+    {
+      "Path": "backend/tests/test_job_history.py",
+      "SHA256": "2FCC128AC1CF5385CDF19139B2F9FE4BD52E850F8C41268CDD401F34ED06616A"
+    },
+    {
+      "Path": "backend/tests/test_library_search.py",
+      "SHA256": "162C32BB0448FD569EFFAD9A830ED04FC0F9EC50AA6C2D0E5C87FD2F7C72F450"
+    },
+    {
+      "Path": "backend/tests/test_live_only_and_captions.py",
+      "SHA256": "B219461726848A4E422F40E114ED0201F453880D877A15BABD59F7C6A5C8885D"
+    },
+    {
+      "Path": "backend/tests/test_live_scheduling.py",
+      "SHA256": "49C4F49F164385F179338967F90132EE6769BB3B77E3B9914152CD2EB08E304D"
+    },
+    {
+      "Path": "backend/tests/test_local_security.py",
+      "SHA256": "58AC8FDB8B35531F4744B9E9E89BEBC53CA2A08C9F295127CC510BD487A22CEE"
+    },
+    {
+      "Path": "backend/tests/test_manual_publishing.py",
+      "SHA256": "8688DA4363AF00D9A1DF69D6F8113E37DA7839B770630C9D8CCA56F86442179C"
+    },
+    {
+      "Path": "backend/tests/test_meta_connection.py",
+      "SHA256": "8FFDBEF03CEB64775A1D5EC93BF0BA4269BBAE1A1CBDB2F5E6A1379C05AB459C"
+    },
+    {
+      "Path": "backend/tests/test_natural_revision.py",
+      "SHA256": "8F75B34DE28B774C1A3594C14B4119B34604917794DDEA8AD4D3B16888E3EC88"
+    },
+    {
+      "Path": "backend/tests/test_permanent_deletion.py",
+      "SHA256": "F58DA97115128B6F01D43EF53EC6B32168D6373A172CD3D5D6AC850F974A7EB5"
+    },
+    {
+      "Path": "backend/tests/test_platform_exports.py",
+      "SHA256": "4789684A5A23007DB10BFE944D1F9444684530AFAFB0B8C41B23EB1F6045E5CA"
+    },
+    {
+      "Path": "backend/tests/test_poster_output_audit.py",
+      "SHA256": "63BB1AE257F98A95A042254BDB9E663EB9FB355200924DF6AFAEFCDD367C025E"
+    },
+    {
+      "Path": "backend/tests/test_poster_preview.py",
+      "SHA256": "ACE4899EC7384F8378BF260AC8C503E82503479BC14AE68A0F4A62D6A78A4254"
+    },
+    {
+      "Path": "backend/tests/test_provider_failures.py",
+      "SHA256": "7774759E94A4B476CF1A422260724FA8948B24C2A611785A05B806B33A87D12F"
+    },
+    {
+      "Path": "backend/tests/test_publication_check_delivery.py",
+      "SHA256": "4B4BAE7C5505F97D896DABCA261D211E806ED2920952ED7ECAA0438B4C3A80C9"
+    },
+    {
+      "Path": "backend/tests/test_publication_recovery.py",
+      "SHA256": "C812AA484A28876B3D8C9E7219C1AEF5F83B70FE2E46C3D2B2EE7E4413A3CB54"
+    },
+    {
+      "Path": "backend/tests/test_publishing.py",
+      "SHA256": "CCFE7888DC78BD77BA2E70B00D0C2B369443D237892DEF0F614AE0572C2A8C82"
+    },
+    {
+      "Path": "backend/tests/test_publishing_visibility.py",
+      "SHA256": "FC22D5926D4181DAB5A366C4F420E6211F87E15215AA2FD1B7705C146B053D20"
+    },
+    {
+      "Path": "backend/tests/test_research.py",
+      "SHA256": "05273D7192ADF1202C2E45F7133172B140B1D11B9F35A646551E5CE68D280849"
+    },
+    {
+      "Path": "backend/tests/test_templates.py",
+      "SHA256": "3EC8DE29C4F4B48BA4A0CB14CA9F358EAA05B5970F08EF9D42F18BA89034605B"
+    },
+    {
+      "Path": "backend/tests/test_text_reliability.py",
+      "SHA256": "DA061F523A2ECE8701589F4A60493F287CDC9B03A5561CEE8B65CAB742C73286"
+    },
+    {
+      "Path": "backend/tests/test_version_restoration.py",
+      "SHA256": "11AAEAC7E43CDFBFAB3FD4CE7E26C9AC4DF62A1B37B84DF3758BAF3C65784F83"
+    },
+    {
+      "Path": "backend/tests/test_visual_direction.py",
+      "SHA256": "83AC6475B22D66B4049888A9C8D49AA59D73CE2B0C10247DBC9BD4961CC4D3FA"
+    },
+    {
+      "Path": "commands.md",
+      "SHA256": "9E37467B50FD4256CF1411AB1FD0819CFC8E7A9C398ED9295A9835DC0EB93E14"
+    },
+    {
+      "Path": "demo_reports/01-machine-learning.json",
+      "SHA256": "C5788997AE640F968BF5E053220E2BB5C974CF347D05E2098E73BA6F4EC57D20"
+    },
+    {
+      "Path": "demo_reports/02-generative-ai.json",
+      "SHA256": "81E1BF6F2AEDB8A3FA69F950A8C26438AE6EFE0BCAF796ECE463B862F6321A15"
+    },
+    {
+      "Path": "demo_reports/03-cybersecurity.json",
+      "SHA256": "3F7C5E71AD39B59A59D5069A6C10C12015C60A9DABC390D2028587D9AC9426FC"
+    },
+    {
+      "Path": "demo_reports/04-data-science.json",
+      "SHA256": "73428C5FEF7F82DE06435CD5E114F84367AE6D45D9D699CB280C270798BD6E8C"
+    },
+    {
+      "Path": "demo_reports/05-ai-trends.json",
+      "SHA256": "D014B71AD93F58AEF36B94C1512A529354769333FC063534706DAF47E606088D"
+    },
+    {
+      "Path": "demo_reports/README.md",
+      "SHA256": "2E9CE4D58EE6AD3C9A0FCD854C199545F600BB36F6D1276A1E67F49CB25C352C"
+    },
+    {
+      "Path": "docs/DECISIONS.md",
+      "SHA256": "D289F643DCA63574E4755B5E8B00A90BB20C5F745688E42B407C5443AE63A596"
+    },
+    {
+      "Path": "docs/agent_workflows.md",
+      "SHA256": "06F7A9F1DCF8840CD528E00678804DBB5A27A6368AB482A3F72B3127CF626A21"
+    },
+    {
+      "Path": "docs/api_contracts.md",
+      "SHA256": "463A36AFEBE84154A3A67BD8A568BE19D9D729CEFF9FD18A472F732AAA865E5D"
+    },
+    {
+      "Path": "docs/approval_verification.md",
+      "SHA256": "4D7DD37DC6B7153815754F23802C8A8EBB7F0DC7FBCB21E07AD47800C66D29A0"
+    },
+    {
+      "Path": "docs/architecture.md",
+      "SHA256": "2B0EAB59E62B87BF8DC3FFB35171F4D08B761A86D2393AF4FC5BC225F6C98668"
+    },
+    {
+      "Path": "docs/background_verification.md",
+      "SHA256": "1561E20DD951B4F5371022F364FF8FBEFE1DAF995F7C052CC047117DA79E3916"
+    },
+    {
+      "Path": "docs/backup_restore.md",
+      "SHA256": "B179F768E14472419DC30CA5AFFB171D52AD2E82A709BD846D6AEB2F5AD4AEE4"
+    },
+    {
+      "Path": "docs/backup_restore_verification.md",
+      "SHA256": "B730838C563B32D1E4FC090653602EA8B4A821DBFD16B56349054D0CEB72693F"
+    },
+    {
+      "Path": "docs/campaign_content_verification.md",
+      "SHA256": "EC3F4E5A9658E7A434AA249FED35ADFB434462DA06F78977EA1FB9F1B02E29BF"
+    },
+    {
+      "Path": "docs/caption_research_verification.md",
+      "SHA256": "31C0D0943429C527865A47AEEC6C36AB194DDFD40848DD5BFF981BB43AC46F06"
+    },
+    {
+      "Path": "docs/cloudinary_setup.md",
+      "SHA256": "A6633EC5E85AC4491F451ED61FAEFE663E8F15F7E7415D53DF4F594CEFD989F7"
+    },
+    {
+      "Path": "docs/content_workflow_verification.md",
+      "SHA256": "EE0AC805DC84C51167D02C8AF10FA34544D6574839CF5ACD5976D692EAB55928"
+    },
+    {
+      "Path": "docs/coordinator_verification.md",
+      "SHA256": "412E8C5D4228C07053E68AAE87376B126BC3B8D3B7F51A29EFDC31F5D82724A5"
+    },
+    {
+      "Path": "docs/database_schema.md",
+      "SHA256": "1B7D2EE3EED5689B5849AD1CB2434BFE171D1A9AF74A312C8BD9FCFE2F7B39DF"
+    },
+    {
+      "Path": "docs/development_roadmap.md",
+      "SHA256": "BD918751D03A8090A8E3F4B17A5365F1562394FE19366B39A1F4FF654D03E791"
+    },
+    {
+      "Path": "docs/distinct_creative_verification.md",
+      "SHA256": "EBBA1C7325103D969F0387415022192F6D87721C75D851CBD51CCA7EAD9423B7"
+    },
+    {
+      "Path": "docs/editor_scroll_approval_verification.md",
+      "SHA256": "2A36B58150183B360463EE2B5014EBDC37CADB343B158BC82578B265E8088C5B"
+    },
+    {
+      "Path": "docs/exact_preview_verification.md",
+      "SHA256": "A05877CF5A1BDE00E3C40AAADC4872798F67984455F0EBD08558A96BA1D83F29"
+    },
+    {
+      "Path": "docs/facebook_multi_image_verification.md",
+      "SHA256": "3118C4B87C1F73B7D7EB9E1C9AC4CB086B2331E77A5A6C4CA569AA47EDAF7F27"
+    },
+    {
+      "Path": "docs/facebook_publishing_verification.md",
+      "SHA256": "3DD3B86AC55918D0290F54AC1BA8FC0193DEDDBD3B1016A2355851067475D202"
+    },
+    {
+      "Path": "docs/foundation_verification.md",
+      "SHA256": "A5C4951A2F70F2368578813B0ED7753125208585E92F5D73579F8974ACA6C8FA"
+    },
+    {
+      "Path": "docs/generation_reliability_verification.md",
+      "SHA256": "2D6761A03F6D1E1CA8FCE22EF0D4F848BB729DB909F402AAFB7294572E335669"
+    },
+    {
+      "Path": "docs/hashtag_verification.md",
+      "SHA256": "9C3D8E14041B515E03E87E5824D12F73732EE8EF2E02AFC880B8F45FA6E822D8"
+    },
+    {
+      "Path": "docs/instagram_carousel_verification.md",
+      "SHA256": "B8A53D60647266A55B00B06633D0A9FEA6047E13FE2AEBA19757CE8FB8D2CAC4"
+    },
+    {
+      "Path": "docs/instagram_publishing_verification.md",
+      "SHA256": "641BEF944601624073E3DEF431AA32C32780025C7A61D5BE31C1FF2A14C4A6F2"
+    },
+    {
+      "Path": "docs/job_recovery_verification.md",
+      "SHA256": "6B4A8653F384B2265BA9386264FD1AEDD06C763C852F0702C239A765503DB905"
+    },
+    {
+      "Path": "docs/library_drafts_verification.md",
+      "SHA256": "16D7A7C52517F16944EA403A4277EF367385581AD16EF3AD02DFBBC570753478"
+    },
+    {
+      "Path": "docs/linkedin_manual_verification.md",
+      "SHA256": "38E3C2D21F4E532B226B543B3B7560D6037D709E84BFEC87FCF697733AC9FE98"
+    },
+    {
+      "Path": "docs/linkedin_setup.md",
+      "SHA256": "5F9ACF2DD02C8938FD648DDE6976ECC5251879FEBFAA3D766C2D7EC9FDDDB92B"
+    },
+    {
+      "Path": "docs/live_scheduling_verification.md",
+      "SHA256": "425796F8BCD657F7BA814FC1EFE70AB24BA2CE6006526A9353FD95E956E339D1"
+    },
+    {
+      "Path": "docs/local_security_verification.md",
+      "SHA256": "9B3C5E0146326C35432D4083CA89666835E5A37878B7B211DDD2780C89CCA201"
+    },
+    {
+      "Path": "docs/meta_connection_verification.md",
+      "SHA256": "90A109C68585962EE1B085637DA12C2B492C0E11283F143752D740AC9093E0C6"
+    },
+    {
+      "Path": "docs/natural_revision_verification.md",
+      "SHA256": "D2E16063EE997C70183F8E4BBA9B6E11AC1E702FD2BD92E8D3FCE13EC12853B0"
+    },
+    {
+      "Path": "docs/permanent_deletion_verification.md",
+      "SHA256": "0D912C74C15BA4A7581A87B489878C20DE2AF7C2D7EBD8073B692110729F771F"
+    },
+    {
+      "Path": "docs/phase1_acceptance.md",
+      "SHA256": "C21DE9F511E900185F89E9CB8ACFDAEEFD05820C02FEF65C9732C54381B1D23F"
+    },
+    {
+      "Path": "docs/platform_export_verification.md",
+      "SHA256": "E38D03CEE8BC49820FCFC698007B62EAABFCE1C5298B8C4ECEF8ABBE4882BD30"
+    },
+    {
+      "Path": "docs/pollinations_image_generation.md",
+      "SHA256": "0AC43B8610315F82614301F421B55DC47E2F9BB991F7A973E4FCD8CE382DBF71"
+    },
+    {
+      "Path": "docs/post_research_improvements.md",
+      "SHA256": "E242F7A9BE2D58D7B50AC2D1789D7DF0F9E275E2BB1E1720A1F7A92C0A614949"
+    },
+    {
+      "Path": "docs/poster_output_verification.md",
+      "SHA256": "AD400C64E3871E788868278CCA7EDF3124FDC57F77E27EB166F718325BCE468C"
+    },
+    {
+      "Path": "docs/product_publishing_cleanup.md",
+      "SHA256": "073E9C1EE4AB0566B1482743B3F9CF7F0AEFEBF1319F3FED164B89460E9919C8"
+    },
+    {
+      "Path": "docs/publication_recovery_verification.md",
+      "SHA256": "5AE7770FA1E30C840ED1124A21A256FE239F4BFF2C948CC9B3F4F06FE2993BA8"
+    },
+    {
+      "Path": "docs/publishing_verification.md",
+      "SHA256": "878D51B2677D054DEDEAF17B4B8F8A667520DCD747DD181191097B6CE3B1B267"
+    },
+    {
+      "Path": "docs/research_verification.md",
+      "SHA256": "41C946A3E74CB6FECBAF2CF766535759EE2FE235429DEEDDDF0D288EC2BD4D72"
+    },
+    {
+      "Path": "docs/security_and_api_keys.md",
+      "SHA256": "0B4955CA2DDE5B2298ED02C048E297FB342B3E7BC8D54F1397744BBF70747765"
+    },
+    {
+      "Path": "docs/social_publishing_setup.md",
+      "SHA256": "4906D7471CAFB0B82351346F98A82FF40009B869192C483C7FB1DD6BA346FAC1"
+    },
+    {
+      "Path": "docs/template_verification.md",
+      "SHA256": "50212C372B2A85404CA2F65E84625A62DB43016EF514C31275AEBA40A4E8620A"
+    },
+    {
+      "Path": "docs/testing_strategy.md",
+      "SHA256": "9E24C50E85EAB074EC0AD65E0708859DFB5FC41080BC008C025F99ED218CDE20"
+    },
+    {
+      "Path": "docs/topic_background_verification.md",
+      "SHA256": "DCBE25C60C0D063B7C8DD624E13C796AE0DB90E4D60B9F14EBFC7E707D8C823E"
+    },
+    {
+      "Path": "docs/ui_consistency_verification.md",
+      "SHA256": "56515EF7C32D459D2484425F25EFDAF5A7800AA2835C7D122E6E728C26F6C935"
+    },
+    {
+      "Path": "docs/ui_polish_verification.md",
+      "SHA256": "9E8D2ECA4CC21FED77E2DEAE63F0F030C1135BE78FA541759C66F932323B7C14"
+    },
+    {
+      "Path": "docs/ui_ux_specification.md",
+      "SHA256": "ACF2F7F0151400770A06ECF88106B6AED45B8434C8B12129C487112D23946454"
+    },
+    {
+      "Path": "docs/version_comparison_verification.md",
+      "SHA256": "46FC10751515B7CE98292CF7346E5680CADB5E5F5F9657859122EDD6F9A08EC5"
+    },
+    {
+      "Path": "docs/version_restoration_verification.md",
+      "SHA256": "3B945FAC7F90DB67934FCCE7D2EFD4AB10FA4E1769153613BEDB547AF2977FF5"
+    },
+    {
+      "Path": "docs/visual_refinement_verification.md",
+      "SHA256": "BCF75A368DBED42F5521BFA0A8D5B096E8E488A094BDD4A4AF2C29B735CB1EF6"
+    },
+    {
+      "Path": "frontend/index.html",
+      "SHA256": "E6B7857309A8732B18CE75F67D0493786BF0DC3833061B01F806E40E5602893F"
+    },
+    {
+      "Path": "frontend/package.json",
+      "SHA256": "E1399BB8B6B0F7A9F73131DAEAF8A3F1E8396CF8C0B98C1F9E9CF39D02F7FD05"
+    },
+    {
+      "Path": "frontend/pnpm-lock.yaml",
+      "SHA256": "3072E9F65CF4943DA95836AC7D0C8A414A451CA126586AA64F9E4066582563BB"
+    },
+    {
+      "Path": "frontend/pnpm-workspace.yaml",
+      "SHA256": "AC02D96368617C760F093CFE61FDEC64B6244007AB3553E0D6621F706F54A353"
+    },
+    {
+      "Path": "frontend/src/App.tsx",
+      "SHA256": "EBBA5DA0DA820FD9D0B34BB82A63DC0711F17418055FCA575692E86E9DB1D451"
+    },
+    {
+      "Path": "frontend/src/Approvals.tsx",
+      "SHA256": "9DD8843C7FA880EC316BCACBB8B98CE079EEDA137B062645316FC472A5FA54DE"
+    },
+    {
+      "Path": "frontend/src/ContentControls.tsx",
+      "SHA256": "0567C2A0BF99094E0471FAB9402849E4DB87B7866A8BD33C49C9C1DB9E8B2AC0"
+    },
+    {
+      "Path": "frontend/src/Coordinate.tsx",
+      "SHA256": "012220133305C3803B25A2169D479968A2678EF98A69312196B394E035F148E4"
+    },
+    {
+      "Path": "frontend/src/Create.tsx",
+      "SHA256": "F47A6B377952845C8FF7DAD788C669685E0AB4E871C1CE10EC4C94C495D01988"
+    },
+    {
+      "Path": "frontend/src/DraftPreview.tsx",
+      "SHA256": "0954A2D8686F8E8E2F05785BD2C64E21CAFFA551CEAB6C0F29C31EAE0E1C9B3F"
+    },
+    {
+      "Path": "frontend/src/FacebookPublishing.tsx",
+      "SHA256": "9AF128E718793055536D2051B18EE3910A058DD038F8D1BD87618960E1387AA4"
+    },
+    {
+      "Path": "frontend/src/InstagramPublishing.tsx",
+      "SHA256": "A24C4DFB4CFF43C696E9438E467BDBF020A0FCFAB5209A60C0DE623674AF60AA"
+    },
+    {
+      "Path": "frontend/src/Jobs.tsx",
+      "SHA256": "CC2BE0F6AC025A3CFF621D057578DC78A0FAF83ABD6BB0FD5F3C6C059955E904"
+    },
+    {
+      "Path": "frontend/src/LinkedInManualPublishing.tsx",
+      "SHA256": "09B9DA07DB50AB6E8E159934DF11ED94219778010A1E258A6C1FD583BEAA5D88"
+    },
+    {
+      "Path": "frontend/src/NaturalRevision.tsx",
+      "SHA256": "3CBA11A152ADFB3C03F97002CA557A8AC703511C6A455E2537C07CAFCE26ECFA"
+    },
+    {
+      "Path": "frontend/src/PosterViewer.tsx",
+      "SHA256": "9B25FDF0BC78325294C1571E74C7DD951F17DAF2C033916E9D3DD93E3EBB94B6"
+    },
+    {
+      "Path": "frontend/src/PublicationResultCheck.tsx",
+      "SHA256": "0F6DCD120D259C483264895AE526872680DC35826944179E7DF92FD183C10CE9"
+    },
+    {
+      "Path": "frontend/src/Publishing.tsx",
+      "SHA256": "2DCB52AD7FAD3FA323317A52AE2AEA83B522DF3DA7D5F226DDB86057A0601805"
+    },
+    {
+      "Path": "frontend/src/PublishingSchedule.tsx",
+      "SHA256": "9410AC4616FFC6A097B188FB719AF4B4E60CAB367692F56FDF6A9FE770326B31"
+    },
+    {
+      "Path": "frontend/src/QuickTopic.tsx",
+      "SHA256": "433BA55FC934C9F3A5156D6A2F1495EE3314A055A18C7B810589595A508A30AB"
+    },
+    {
+      "Path": "frontend/src/Research.tsx",
+      "SHA256": "3D75F4C02EE6112A18D5107B632BFB02B98BEEE09945D8D5A5A0514761F1C760"
+    },
+    {
+      "Path": "frontend/src/SocialConnections.tsx",
+      "SHA256": "CA012D39F73754E3ABA1029BFE79553EB9A0766BFF92377F91564A71B7697E1B"
+    },
+    {
+      "Path": "frontend/src/UI.tsx",
+      "SHA256": "337A25DCCFD180F3E46F60AFD06AB68A902761601AFDF9711780387679A7A17E"
+    },
+    {
+      "Path": "frontend/src/UnsavedChanges.ts",
+      "SHA256": "CBE9431715EF5D67AB9F04945B337EDCECD396638830E90A70281D53B2DC5C72"
+    },
+    {
+      "Path": "frontend/src/VersionComparison.tsx",
+      "SHA256": "536E4501F4C8552F19B8191627B6177E885A1052C593E3AADA1FC630917A5761"
+    },
+    {
+      "Path": "frontend/src/WorkflowSteps.tsx",
+      "SHA256": "64459BA8EF081A6736F277A4B24D31D73118A1214DC01B7949772773FE170F74"
+    },
+    {
+      "Path": "frontend/src/api-schema.d.ts",
+      "SHA256": "C43D7B7EF6A4C462150FB5F97C5798C44F1DDB38B83E9D0D954314BC2AE03D6F"
+    },
+    {
+      "Path": "frontend/src/api.ts",
+      "SHA256": "7D84283D61E13AD404B3508AD4A5D056F61B399BD679207D41DDCC16E80A4865"
+    },
+    {
+      "Path": "frontend/src/create.css",
+      "SHA256": "9749816016CD44979A1FC0BE4ECE9625E4914A9F06AE690FCB7F2B6BFC27D7E1"
+    },
+    {
+      "Path": "frontend/src/facebook-publishing.css",
+      "SHA256": "1EE4E58F612EE5B3EB7CDFEF153CDBC8AFC1F31C1E2833E68DFDE206B60D81DA"
+    },
+    {
+      "Path": "frontend/src/main.tsx",
+      "SHA256": "0E7CEFBC5C6357146D451FF91D21C23C9A54764BDDE36422D6CE70A7EAD14FC3"
+    },
+    {
+      "Path": "frontend/src/polish.css",
+      "SHA256": "245C94685FBCBE5F7EB77F031EC2EAE5211D78198F8AB897DC1D1E3A88C84500"
+    },
+    {
+      "Path": "frontend/src/style.css",
+      "SHA256": "6CDA4E2B216F2E83E775EC1E831EDA709C78595DE3451D7FE23A64EB4AC3A6EF"
+    },
+    {
+      "Path": "frontend/src/visual.css",
+      "SHA256": "B2F8F6AF957C8EF3B9CDC8B15CEFAC18AD2041FC1B9B4169FF505797B7B1389A"
+    },
+    {
+      "Path": "frontend/tsconfig.json",
+      "SHA256": "C7A8217ED6F9E82FE77A2BAEFB806C03062DB2DEC1722742DAFB76AC3631B47E"
+    },
+    {
+      "Path": "frontend/vite.config.ts",
+      "SHA256": "0EFD818780D1CE17773E391E079633E00C7F4641EE13A39D8D68998F5D586114"
+    },
+    {
+      "Path": "pytest.ini",
+      "SHA256": "9176A57534834BE6653473D1E1285DEE800CEC09E9CEED976BFEE798F9D8C520"
+    },
+    {
+      "Path": "scripts/audit_python_dependencies.py",
+      "SHA256": "D54BC4FF503E07046302C589947D5776CA2C78146C00FB2394513B9B762134E6"
+    },
+    {
+      "Path": "scripts/backup.py",
+      "SHA256": "BD6D04AE6EA861CEC4130A19B487149EC9A96FE53DA7B4151B83D7CC52B645B1"
+    },
+    {
+      "Path": "scripts/browser_approvals.py",
+      "SHA256": "FBB87320A2069A4613D947BA7618052796C3DC89C6F1CADDF916B738053891CF"
+    },
+    {
+      "Path": "scripts/browser_comparison.py",
+      "SHA256": "57F073BC967B0D3EA99269C3907FD04C88F4BE85B53EDE5C42C6B65574597086"
+    },
+    {
+      "Path": "scripts/browser_facebook_publishing.py",
+      "SHA256": "3542742D2B8FF7D97367A2FB31A1626B63E0F977D6613BD962F9CCDB37E05A40"
+    },
+    {
+      "Path": "scripts/browser_instagram_publishing.py",
+      "SHA256": "6BEBCD38A433D63810FB8A2767454823580CED726354EAC4DFA632A8FB892BBD"
+    },
+    {
+      "Path": "scripts/browser_linkedin_manual.py",
+      "SHA256": "9FB30A0607AB6E9B9D70E2FAFFF4A1B16E019750D4998C68D547132DE4BE9E32"
+    },
+    {
+      "Path": "scripts/browser_live_scheduling.py",
+      "SHA256": "9E480EDD59C8C8A2E1DDB0ED8E466DA1F4CDE7E4A5619182E73D351E26CF99C4"
+    },
+    {
+      "Path": "scripts/browser_meta_connection.py",
+      "SHA256": "0526E7C53649F5A16F32A0BEE74D2E4850832AE07505431D049A6143D4090968"
+    },
+    {
+      "Path": "scripts/browser_polish.py",
+      "SHA256": "6A00F46F0A10170A74F8E2F3513B582D8638CDDF686607D3C9EED5F3847BE9B8"
+    },
+    {
+      "Path": "scripts/browser_publication_recovery.py",
+      "SHA256": "313A7A7E45E36CC311942B19F07F9BDB680EDBA386FAF76CB8A0AC694BCAF57A"
+    },
+    {
+      "Path": "scripts/browser_publishing.py",
+      "SHA256": "6946792BE84E67E3DB502B77E59B91213D0873A1C5DF7D1F8DA0A23E1424536E"
+    },
+    {
+      "Path": "scripts/browser_smoke.py",
+      "SHA256": "FBFF579427F7B06C569D72BB296E64309112AF5E826FCD84F25DB0E3AE9CAB25"
+    },
+    {
+      "Path": "scripts/browser_text_wait.py",
+      "SHA256": "97C44B929A03AD2AD53DCF176FD0A293DD1909CE8C1A079BBF28848735A0581B"
+    },
+    {
+      "Path": "scripts/browser_ui_consistency.py",
+      "SHA256": "4791042F919B21C563636819F1DB5E764AF52F0FF6D78D41C10B87608CAF9D52"
+    },
+    {
+      "Path": "scripts/check_backgrounds.py",
+      "SHA256": "CF954510B006A7132E832E0787F1CB9547ADB116B6C02332955BBA4B2AD3FC80"
+    },
+    {
+      "Path": "scripts/check_cloudinary_media.py",
+      "SHA256": "FCD0F07ED6D2FFF9F833D4C18AA05E274CA061E1C958311CC37F7D4217704159"
+    },
+    {
+      "Path": "scripts/check_instagram_access.py",
+      "SHA256": "78F33A2871D065DFBA5F7F78C5B377D3503E91FAFF37846B83E3AC7A5548A1B5"
+    },
+    {
+      "Path": "scripts/check_live_captions.py",
+      "SHA256": "83BBC9457F6C4D0EA69AD70B6C2405BFC6DBF85EDA97A3928343E47FF179EEA0"
+    },
+    {
+      "Path": "scripts/check_live_coordinator.py",
+      "SHA256": "E80D375542C6291540ACB691D1BA6A4BA8C7A88EC2989E8970B3288FB801DA8B"
+    },
+    {
+      "Path": "scripts/check_live_revision.py",
+      "SHA256": "06F95B5C60BD568857F08D685B94E151C8D7104310D131732B09895FC09693B6"
+    },
+    {
+      "Path": "scripts/check_renderer.py",
+      "SHA256": "2F906F83D0119CEE1D74C052893469238B70F0E2F5F1D117AFB834FEE9011C30"
+    },
+    {
+      "Path": "scripts/check_topic_background.py",
+      "SHA256": "41F102E9A4BC4341A3C797D42C280896C8F05C0597D43E01E443494315BF4205"
+    },
+    {
+      "Path": "scripts/export_openapi.py",
+      "SHA256": "8BA6AF0E4BDFBBEF063B5B0979E5166FD8EDD61AE765F6B1A20B6A19904BA98F"
+    },
+    {
+      "Path": "scripts/live_content_smoke.py",
+      "SHA256": "58EEE74643DBDC65235D5F2CC2A23786F59A4D7084241088690A496E402306DE"
+    },
+    {
+      "Path": "scripts/live_research_smoke.py",
+      "SHA256": "7A0D91709AEBE2078333DAED4C8F55F0DD9B4F490CEF33E7E586E6EB561CDE89"
+    },
+    {
+      "Path": "scripts/phase1_acceptance.py",
+      "SHA256": "86B3AA885DCCC758B35AD01DA007EC95F7D6D10B21E22FDF9CE8382E9EC1292A"
+    },
+    {
+      "Path": "scripts/setup_cloudinary_env.py",
+      "SHA256": "2F5CBC3C2B8571357C589C9A052DE3949A77702CF20384A64864FDEC3A12F94D"
+    },
+    {
+      "Path": "scripts/setup_cloudinary_folder.py",
+      "SHA256": "D5136B5E97D1915160406ACDF9CDF5A7BC30DC661433AACB9C81DA7791CD8DC7"
+    },
+    {
+      "Path": "scripts/setup_meta_env.py",
+      "SHA256": "1C66FF72A4091FE751F57C7048E87F830974D5D4BE31604438B336D49F04145E"
+    }
+  ]
+}

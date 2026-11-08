@@ -1,0 +1,7 @@
+{
+  "pattern_scan_findings": [],
+  "original_absolute_runtime_paths": [],
+  "original_env_copied": false,
+  "original_git_copied": false,
+  "note": "Heuristic secret scan plus allowlist provenance; no original environment file or credential-bearing runtime data was copied. Test-only credential literals are synthetic."
+}

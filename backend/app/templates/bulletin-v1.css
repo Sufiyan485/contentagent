@@ -1,0 +1,9 @@
+.shade { background: rgba(5,12,28,.3); }
+.content { inset: 58px; padding: 44px; background: #f8fafc; color: #0f172a; border-top: 12px solid var(--brand-color); }
+.brand { color: #334155; }
+.label { color: #475569; margin-top: 42px; letter-spacing: 3px; }
+.copy { max-width: 100%; padding-top: 26px; }
+h1 { letter-spacing: -2px; margin-bottom: 28px; }
+.body { color: #334155; }
+.cta { max-width: 100%; border-left: 5px solid var(--brand-color); padding-left: 20px; margin: 24px 0; }
+.footer { color: #475569; }

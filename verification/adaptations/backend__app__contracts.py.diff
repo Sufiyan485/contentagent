@@ -1,0 +1,70 @@
+--- original/backend/app/contracts.py
++++ standalone/backend/app/contracts.py
+@@ -102,17 +102,8 @@
+         return self
+ 
+ 
+-class CampaignView(CampaignInput):
+-    model_config = ConfigDict(json_schema_serialization_defaults_required=True)
+-    id: UUID
+-    created_at: AwareDatetime
+-
+-
+-class CampaignPage(Contract):
+-    items: list[CampaignView]
+-    total: int
+-    page: int
+-    limit: int
++
++
+ 
+ 
+ class ContentTrashState(Contract):
+@@ -120,15 +111,8 @@
+     trashed_at: AwareDatetime | None
+ 
+ 
+-class PermanentDeleteRequest(Contract):
+-    version_id: UUID
+-    confirmation: Literal['DELETE']
+-
+-
+-class PermanentDeleteResult(Contract):
+-    id: UUID
+-    deleted: Literal[True] = True
+-    cleanup_pending: bool = False
++
++
+ 
+ 
+ class GenerationRequest(Contract):
+@@ -231,25 +215,10 @@
+     warnings: list[Text] = Field(default_factory=list)
+ 
+ 
+-class DashboardView(Contract):
+-    campaigns: int
+-    research_reports: int
+-    recent_campaigns: list[CampaignView]
+-    generation_available: bool = False
+-
+-
+-class AgentSetting(Contract):
+-    agent: Literal['content', 'research']
+-    provider: Literal['gemini', 'groq', 'openrouter', 'openai']
+-    model: str
+-    credential_configured: bool
+-    integration_status: Literal['not_implemented', 'configured', 'credentials_required'] = 'not_implemented'
+-
+-
+-class HealthView(Contract):
+-    status: Literal['ok']
+-    database: Literal['ready']
+-    milestone: Literal['foundation', 'content_workflow']
++
++
++
++
+ 
+ 
+ class GeneratedBatch(Contract):

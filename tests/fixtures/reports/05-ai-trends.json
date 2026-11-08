@@ -1,0 +1,66 @@
+{
+  "schema_version": "1",
+  "id": "10000000-0000-4000-8000-000000000005",
+  "origin": "demo",
+  "topic": "AI Trends",
+  "summary": "A dated 2026 research snapshot: stronger AI capabilities still require careful evaluation.",
+  "sources": [
+    {
+      "id": "s1",
+      "url": "https://hai.stanford.edu/news/inside-the-ai-index-12-takeaways-from-the-2026-report",
+      "title": "Inside the AI Index: 12 Takeaways from the 2026 Report",
+      "publisher": "Stanford HAI",
+      "published_at": "2026-04-13",
+      "retrieved_at": "2026-10-21T00:00:00Z"
+    }
+  ],
+  "claims": [
+    {
+      "id": "c1",
+      "text": "Stanford's April 2026 summary describes improving AI benchmark performance alongside uneven capabilities.",
+      "verification_status": "supported",
+      "verification_method": "Manually checked against the linked source on 2026-10-21; not independent empirical verification.",
+      "evidence": [
+        {
+          "source_id": "s1",
+          "excerpt": "But not all capabilities are evenly distributed.",
+          "locator": "AI Can Win a Mathematical Olympiad But Can't Tell Time",
+          "relation": "supports"
+        }
+      ],
+      "limitations": [
+        "Source support does not guarantee universal applicability."
+      ]
+    },
+    {
+      "id": "c2",
+      "text": "The same summary identifies continued difficulty with multistep planning and coherent video generation.",
+      "verification_status": "supported",
+      "verification_method": "Manually checked against the linked source on 2026-10-21; not independent empirical verification.",
+      "evidence": [
+        {
+          "source_id": "s1",
+          "excerpt": "managing multiple-step planning",
+          "locator": "AI Can Win a Mathematical Olympiad But Can't Tell Time",
+          "relation": "supports"
+        }
+      ],
+      "limitations": [
+        "Source support does not guarantee universal applicability."
+      ]
+    }
+  ],
+  "content_opportunities": [
+    "Contrast benchmark progress with task-specific limitations.",
+    "Explain why teams should evaluate AI on their actual tasks."
+  ],
+  "warnings": [
+    "Manually prepared demo report; no live Research Agent was used."
+  ],
+  "limitations": [
+    "Dated snapshot of the April 2026 report, checked 2026-10-21; not breaking news.",
+    "Benchmark results do not predict reliability for every real-world task."
+  ],
+  "prepared_at": "2026-10-21T00:00:00Z",
+  "researched_at": null
+}

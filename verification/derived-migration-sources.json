@@ -1,0 +1,32 @@
+[
+  {
+    "source": "backend/migrations/versions/0001_foundation.py",
+    "source_sha256": "60a8bf87bbc246566943078eb5899ebd406fbcc99a22e8c138cdd9d2284f9a93",
+    "derived_destination": "backend/migrations/versions/0001_content_standalone.py",
+    "purpose": "Frozen content schema/constraints/version triggers only; no research or publishing job schema copied."
+  },
+  {
+    "source": "backend/migrations/versions/0002_content_workflow.py",
+    "source_sha256": "ebb0f2d02a98de1a4d4dff0eea004694c97bcada221907c65d485280a63c4065",
+    "derived_destination": "backend/migrations/versions/0001_content_standalone.py",
+    "purpose": "Frozen content schema/constraints/version triggers only; no research or publishing job schema copied."
+  },
+  {
+    "source": "backend/migrations/versions/0003_immutable_versions.py",
+    "source_sha256": "c7b88bc26fa52dbf594ed58dc8097d7a94cac61df65dec83c42644f2a6050109",
+    "derived_destination": "backend/migrations/versions/0001_content_standalone.py",
+    "purpose": "Frozen content schema/constraints/version triggers only; no research or publishing job schema copied."
+  },
+  {
+    "source": "backend/migrations/versions/0005_content_trash.py",
+    "source_sha256": "2c0dfdd58783639fb5cbee7f8d7bac058df78a4677977a9d2cf376a3bfa7334c",
+    "derived_destination": "backend/migrations/versions/0001_content_standalone.py",
+    "purpose": "Frozen content schema/constraints/version triggers only; no research or publishing job schema copied."
+  },
+  {
+    "source": "backend/migrations/versions/0006_permanent_deletion.py",
+    "source_sha256": "c50a5b9ea80b327dcefe92ba67d097a7678694dca7fae8ef41fa0d02ffb601cf",
+    "derived_destination": "backend/migrations/versions/0001_content_standalone.py",
+    "purpose": "Frozen content schema/constraints/version triggers only; no research or publishing job schema copied."
+  }
+]

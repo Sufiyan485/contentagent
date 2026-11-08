@@ -1,0 +1,2332 @@
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "Standalone Content Creation Agent",
+    "version": "1.0.0"
+  },
+  "paths": {
+    "/api/v1/health": {
+      "get": {
+        "summary": "Health",
+        "operationId": "health_api_v1_health_get",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/research-reports": {
+      "get": {
+        "summary": "Reports",
+        "operationId": "reports_api_v1_research_reports_get",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "items": {
+                    "$ref": "#/components/schemas/ResearchReport"
+                  },
+                  "type": "array",
+                  "title": "Response Reports Api V1 Research Reports Get"
+                }
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "summary": "Import Report",
+        "operationId": "import_report_api_v1_research_reports_post",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ResearchReport"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "201": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ResearchReport"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/campaign-contexts": {
+      "post": {
+        "summary": "Campaign Context",
+        "operationId": "campaign_context_api_v1_campaign_contexts_post",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CampaignInput"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "201": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/platform-presets": {
+      "get": {
+        "summary": "Platform Presets",
+        "operationId": "platform_presets_api_v1_platform_presets_get",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "items": {
+                    "$ref": "#/components/schemas/PlatformPreset"
+                  },
+                  "type": "array",
+                  "title": "Response Platform Presets Api V1 Platform Presets Get"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/templates": {
+      "get": {
+        "summary": "Templates",
+        "operationId": "templates_api_v1_templates_get",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "items": {
+                    "$ref": "#/components/schemas/TemplateView"
+                  },
+                  "type": "array",
+                  "title": "Response Templates Api V1 Templates Get"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/generation-jobs": {
+      "get": {
+        "summary": "Job History",
+        "operationId": "job_history_api_v1_generation_jobs_get",
+        "parameters": [
+          {
+            "name": "page",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "minimum": 1,
+              "default": 1,
+              "title": "Page"
+            }
+          },
+          {
+            "name": "limit",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "maximum": 100,
+              "minimum": 1,
+              "default": 20,
+              "title": "Limit"
+            }
+          },
+          {
+            "name": "status",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "enum": [
+                    "queued",
+                    "running",
+                    "partial",
+                    "succeeded",
+                    "failed",
+                    "interrupted",
+                    "cancelled"
+                  ],
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Status"
+            }
+          },
+          {
+            "name": "campaign_id",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "type": "string",
+                  "format": "uuid"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Campaign Id"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/JobPage"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "summary": "Create Job",
+        "operationId": "create_job_api_v1_generation_jobs_post",
+        "parameters": [
+          {
+            "name": "idempotency-key",
+            "in": "header",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 128,
+              "title": "Idempotency-Key"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/GenerationRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "202": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/JobView"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/research-reports/{report_id}": {
+      "get": {
+        "summary": "Get Report",
+        "operationId": "get_report_api_v1_research_reports__report_id__get",
+        "parameters": [
+          {
+            "name": "report_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid",
+              "title": "Report Id"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ResearchReport"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/generation-jobs/{job_id}": {
+      "get": {
+        "summary": "Get Job",
+        "operationId": "get_job_api_v1_generation_jobs__job_id__get",
+        "parameters": [
+          {
+            "name": "job_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid",
+              "title": "Job Id"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/JobView"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/generation-jobs/{job_id}/retry": {
+      "post": {
+        "summary": "Retry Job",
+        "operationId": "retry_job_api_v1_generation_jobs__job_id__retry_post",
+        "parameters": [
+          {
+            "name": "job_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid",
+              "title": "Job Id"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/RetryRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "202": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/JobView"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/generation-jobs/{job_id}/cancel": {
+      "post": {
+        "summary": "Cancel Job",
+        "operationId": "cancel_job_api_v1_generation_jobs__job_id__cancel_post",
+        "parameters": [
+          {
+            "name": "job_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid",
+              "title": "Job Id"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/JobView"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/content": {
+      "get": {
+        "summary": "Library",
+        "operationId": "library_api_v1_content_get",
+        "parameters": [
+          {
+            "name": "page",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "minimum": 1,
+              "default": 1,
+              "title": "Page"
+            }
+          },
+          {
+            "name": "limit",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "maximum": 100,
+              "minimum": 1,
+              "default": 20,
+              "title": "Limit"
+            }
+          },
+          {
+            "name": "campaign_id",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "type": "string",
+                  "format": "uuid"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Campaign Id"
+            }
+          },
+          {
+            "name": "trashed",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "boolean",
+              "default": false,
+              "title": "Trashed"
+            }
+          },
+          {
+            "name": "q",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "maxLength": 200,
+              "default": "",
+              "title": "Q"
+            }
+          },
+          {
+            "name": "platform",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "enum": [
+                    "instagram",
+                    "facebook",
+                    "linkedin"
+                  ],
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Platform"
+            }
+          },
+          {
+            "name": "approval",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "enum": [
+                    "approved",
+                    "unapproved",
+                    "rejected"
+                  ],
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Approval"
+            }
+          },
+          {
+            "name": "sort",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "enum": [
+                "newest",
+                "oldest",
+                "title"
+              ],
+              "type": "string",
+              "default": "newest",
+              "title": "Sort"
+            }
+          },
+          {
+            "name": "date_from",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "type": "string",
+                  "format": "date"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Date From"
+            }
+          },
+          {
+            "name": "date_to",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "type": "string",
+                  "format": "date"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Date To"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/content/{item_id}": {
+      "get": {
+        "summary": "Get Content",
+        "operationId": "get_content_api_v1_content__item_id__get",
+        "parameters": [
+          {
+            "name": "item_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid",
+              "title": "Item Id"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/content/{item_id}/versions": {
+      "get": {
+        "summary": "Versions",
+        "operationId": "versions_api_v1_content__item_id__versions_get",
+        "parameters": [
+          {
+            "name": "item_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid",
+              "title": "Item Id"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/content/{item_id}/versions/{version_id}/restore": {
+      "post": {
+        "summary": "Restore Version",
+        "description": "Copy an immutable saved version without regenerating any output.",
+        "operationId": "restore_version_api_v1_content__item_id__versions__version_id__restore_post",
+        "parameters": [
+          {
+            "name": "item_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid",
+              "title": "Item Id"
+            }
+          },
+          {
+            "name": "version_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid",
+              "title": "Version Id"
+            }
+          },
+          {
+            "name": "idempotency-key",
+            "in": "header",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 128,
+              "title": "Idempotency-Key"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/VersionRestoreRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/VersionRestoreResult"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/content/{item_id}/preview": {
+      "post": {
+        "summary": "Preview Poster",
+        "operationId": "preview_poster_api_v1_content__item_id__preview_post",
+        "parameters": [
+          {
+            "name": "item_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid",
+              "title": "Item Id"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/PosterPreviewRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "image/png": {}
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/content/{item_id}/revisions": {
+      "post": {
+        "summary": "Revise",
+        "operationId": "revise_api_v1_content__item_id__revisions_post",
+        "parameters": [
+          {
+            "name": "item_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid",
+              "title": "Item Id"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/RevisionRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "202": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/JobView"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/content/{item_id}/natural-revisions": {
+      "post": {
+        "summary": "Natural Revision",
+        "operationId": "natural_revision_api_v1_content__item_id__natural_revisions_post",
+        "parameters": [
+          {
+            "name": "item_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid",
+              "title": "Item Id"
+            }
+          },
+          {
+            "name": "idempotency-key",
+            "in": "header",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 128,
+              "title": "Idempotency-Key"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/NaturalRevisionRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "202": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/JobView"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/assets/{asset_id}": {
+      "get": {
+        "summary": "Asset",
+        "operationId": "asset_api_v1_assets__asset_id__get",
+        "parameters": [
+          {
+            "name": "asset_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid",
+              "title": "Asset Id"
+            }
+          },
+          {
+            "name": "download",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "boolean",
+              "default": false,
+              "title": "Download"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "CampaignInput": {
+        "properties": {
+          "name": {
+            "type": "string",
+            "maxLength": 120,
+            "minLength": 1,
+            "title": "Name"
+          },
+          "description": {
+            "type": "string",
+            "maxLength": 5000,
+            "title": "Description",
+            "default": ""
+          },
+          "objective": {
+            "type": "string",
+            "maxLength": 1000,
+            "title": "Objective",
+            "default": ""
+          },
+          "audience": {
+            "type": "string",
+            "maxLength": 500,
+            "title": "Audience",
+            "default": ""
+          },
+          "platforms": {
+            "items": {
+              "type": "string",
+              "enum": [
+                "instagram",
+                "facebook",
+                "linkedin"
+              ]
+            },
+            "type": "array",
+            "maxItems": 3,
+            "minItems": 1,
+            "title": "Platforms"
+          },
+          "event_details": {
+            "type": "string",
+            "maxLength": 5000,
+            "title": "Event Details",
+            "default": ""
+          },
+          "start_date": {
+            "anyOf": [
+              {
+                "type": "string",
+                "format": "date"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Start Date"
+          },
+          "end_date": {
+            "anyOf": [
+              {
+                "type": "string",
+                "format": "date"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "End Date"
+          },
+          "registration_url": {
+            "anyOf": [
+              {
+                "type": "string",
+                "maxLength": 2083,
+                "minLength": 1,
+                "format": "uri"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Registration Url"
+          },
+          "approved_facts": {
+            "items": {
+              "type": "string",
+              "maxLength": 5000,
+              "minLength": 1
+            },
+            "type": "array",
+            "maxItems": 50,
+            "title": "Approved Facts"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "name"
+        ],
+        "title": "CampaignInput"
+      },
+      "Caption": {
+        "properties": {
+          "platform": {
+            "type": "string",
+            "enum": [
+              "instagram",
+              "facebook",
+              "linkedin"
+            ],
+            "title": "Platform"
+          },
+          "text": {
+            "type": "string",
+            "maxLength": 5000,
+            "minLength": 1,
+            "title": "Text"
+          },
+          "claim_ids": {
+            "items": {
+              "type": "string",
+              "maxLength": 5000,
+              "minLength": 1
+            },
+            "type": "array",
+            "title": "Claim Ids"
+          },
+          "hashtags": {
+            "items": {
+              "type": "string",
+              "pattern": "^#[A-Za-z0-9_]{1,50}$"
+            },
+            "type": "array",
+            "maxItems": 10,
+            "title": "Hashtags"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "platform",
+          "text"
+        ],
+        "title": "Caption"
+      },
+      "Claim": {
+        "properties": {
+          "id": {
+            "type": "string",
+            "maxLength": 5000,
+            "minLength": 1,
+            "title": "Id"
+          },
+          "text": {
+            "type": "string",
+            "maxLength": 5000,
+            "minLength": 1,
+            "title": "Text"
+          },
+          "verification_status": {
+            "type": "string",
+            "enum": [
+              "unverified",
+              "supported",
+              "contradicted",
+              "mixed"
+            ],
+            "title": "Verification Status"
+          },
+          "verification_method": {
+            "type": "string",
+            "maxLength": 5000,
+            "minLength": 1,
+            "title": "Verification Method"
+          },
+          "evidence": {
+            "items": {
+              "$ref": "#/components/schemas/Evidence"
+            },
+            "type": "array",
+            "title": "Evidence"
+          },
+          "limitations": {
+            "items": {
+              "type": "string",
+              "maxLength": 5000,
+              "minLength": 1
+            },
+            "type": "array",
+            "title": "Limitations"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "id",
+          "text",
+          "verification_status",
+          "verification_method"
+        ],
+        "title": "Claim"
+      },
+      "Evidence": {
+        "properties": {
+          "source_id": {
+            "type": "string",
+            "maxLength": 5000,
+            "minLength": 1,
+            "title": "Source Id"
+          },
+          "excerpt": {
+            "type": "string",
+            "maxLength": 5000,
+            "minLength": 1,
+            "title": "Excerpt"
+          },
+          "locator": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Locator"
+          },
+          "relation": {
+            "type": "string",
+            "enum": [
+              "supports",
+              "contradicts"
+            ],
+            "title": "Relation"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "source_id",
+          "excerpt",
+          "relation"
+        ],
+        "title": "Evidence"
+      },
+      "GeneratedConcept": {
+        "properties": {
+          "platform_variants": {
+            "additionalProperties": {
+              "$ref": "#/components/schemas/PlatformCreative"
+            },
+            "propertyNames": {
+              "enum": [
+                "instagram",
+                "facebook",
+                "linkedin"
+              ]
+            },
+            "type": "object",
+            "title": "Platform Variants"
+          },
+          "title": {
+            "type": "string",
+            "maxLength": 5000,
+            "minLength": 1,
+            "title": "Title"
+          },
+          "captions": {
+            "items": {
+              "$ref": "#/components/schemas/Caption"
+            },
+            "type": "array",
+            "maxItems": 3,
+            "minItems": 1,
+            "title": "Captions"
+          },
+          "slides": {
+            "items": {
+              "$ref": "#/components/schemas/SlideText"
+            },
+            "type": "array",
+            "maxItems": 5,
+            "minItems": 1,
+            "title": "Slides"
+          },
+          "background_design": {
+            "type": "string",
+            "maxLength": 5000,
+            "minLength": 1,
+            "title": "Background Design"
+          },
+          "warnings": {
+            "items": {
+              "type": "string",
+              "maxLength": 5000,
+              "minLength": 1
+            },
+            "type": "array",
+            "title": "Warnings"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "title",
+          "captions",
+          "slides",
+          "background_design"
+        ],
+        "title": "GeneratedConcept"
+      },
+      "GenerationRequest": {
+        "properties": {
+          "creative_mode": {
+            "type": "string",
+            "enum": [
+              "shared",
+              "distinct_platforms"
+            ],
+            "title": "Creative Mode",
+            "default": "shared"
+          },
+          "export_mode": {
+            "type": "string",
+            "enum": [
+              "per_platform",
+              "shared_square"
+            ],
+            "title": "Export Mode",
+            "default": "per_platform"
+          },
+          "background_theme": {
+            "type": "string",
+            "enum": [
+              "light",
+              "dark",
+              "colorful"
+            ],
+            "title": "Background Theme",
+            "default": "dark"
+          },
+          "hashtag_count": {
+            "type": "integer",
+            "maximum": 10.0,
+            "minimum": 0.0,
+            "title": "Hashtag Count",
+            "default": 3
+          },
+          "caption_length": {
+            "type": "string",
+            "enum": [
+              "concise",
+              "balanced",
+              "detailed"
+            ],
+            "title": "Caption Length",
+            "default": "balanced"
+          },
+          "template_id": {
+            "type": "string",
+            "enum": [
+              "editorial-v1",
+              "spotlight-v1",
+              "bulletin-v1"
+            ],
+            "title": "Template Id",
+            "default": "editorial-v1"
+          },
+          "topic": {
+            "type": "string",
+            "maxLength": 5000,
+            "minLength": 1,
+            "title": "Topic"
+          },
+          "report_id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Report Id"
+          },
+          "campaign_id": {
+            "anyOf": [
+              {
+                "type": "string",
+                "format": "uuid"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Campaign Id"
+          },
+          "content_type": {
+            "type": "string",
+            "enum": [
+              "educational",
+              "promotional",
+              "informational",
+              "announcement"
+            ],
+            "title": "Content Type",
+            "default": "educational"
+          },
+          "audience": {
+            "type": "string",
+            "maxLength": 5000,
+            "minLength": 1,
+            "title": "Audience",
+            "default": "Beginners"
+          },
+          "tone": {
+            "type": "string",
+            "maxLength": 5000,
+            "minLength": 1,
+            "title": "Tone",
+            "default": "Clear and professional"
+          },
+          "platforms": {
+            "items": {
+              "type": "string",
+              "enum": [
+                "instagram",
+                "facebook",
+                "linkedin"
+              ]
+            },
+            "type": "array",
+            "maxItems": 3,
+            "minItems": 1,
+            "title": "Platforms"
+          },
+          "visual_style": {
+            "type": "string",
+            "maxLength": 5000,
+            "minLength": 1,
+            "title": "Visual Style",
+            "default": "Clean editorial"
+          },
+          "background_subject": {
+            "type": "string",
+            "maxLength": 500,
+            "title": "Background Subject",
+            "default": ""
+          },
+          "brand_profile_id": {
+            "anyOf": [
+              {
+                "type": "string",
+                "format": "uuid"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Brand Profile Id"
+          },
+          "concept_count": {
+            "type": "integer",
+            "maximum": 3.0,
+            "minimum": 1.0,
+            "title": "Concept Count",
+            "default": 1
+          },
+          "slide_count": {
+            "type": "integer",
+            "maximum": 5.0,
+            "minimum": 1.0,
+            "title": "Slide Count",
+            "default": 1
+          },
+          "customization_mode": {
+            "type": "string",
+            "enum": [
+              "automatic",
+              "custom"
+            ],
+            "title": "Customization Mode",
+            "default": "automatic"
+          },
+          "approved_user_facts": {
+            "items": {
+              "type": "string",
+              "maxLength": 5000,
+              "minLength": 1
+            },
+            "type": "array",
+            "maxItems": 50,
+            "title": "Approved User Facts"
+          },
+          "artwork_mode": {
+            "type": "string",
+            "enum": [
+              "pollinations",
+              "application_gradient"
+            ],
+            "title": "Artwork Mode",
+            "default": "pollinations"
+          },
+          "brand_name": {
+            "type": "string",
+            "maxLength": 60,
+            "minLength": 1,
+            "title": "Brand Name",
+            "default": "Content Studio"
+          },
+          "brand_color": {
+            "type": "string",
+            "pattern": "^#[0-9a-fA-F]{6}$",
+            "title": "Brand Color",
+            "default": "#2563eb"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "topic",
+          "report_id"
+        ],
+        "title": "GenerationRequest"
+      },
+      "HTTPValidationError": {
+        "properties": {
+          "detail": {
+            "items": {
+              "$ref": "#/components/schemas/ValidationError"
+            },
+            "type": "array",
+            "title": "Detail"
+          }
+        },
+        "type": "object",
+        "title": "HTTPValidationError"
+      },
+      "JobPage": {
+        "properties": {
+          "items": {
+            "items": {
+              "$ref": "#/components/schemas/JobSummary"
+            },
+            "type": "array",
+            "title": "Items"
+          },
+          "total": {
+            "type": "integer",
+            "title": "Total"
+          },
+          "page": {
+            "type": "integer",
+            "title": "Page"
+          },
+          "limit": {
+            "type": "integer",
+            "title": "Limit"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "items",
+          "total",
+          "page",
+          "limit"
+        ],
+        "title": "JobPage"
+      },
+      "JobSummary": {
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Id"
+          },
+          "topic": {
+            "type": "string",
+            "title": "Topic"
+          },
+          "campaign_id": {
+            "anyOf": [
+              {
+                "type": "string",
+                "format": "uuid"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Campaign Id"
+          },
+          "campaign_name": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Campaign Name"
+          },
+          "parent_job_id": {
+            "anyOf": [
+              {
+                "type": "string",
+                "format": "uuid"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Parent Job Id"
+          },
+          "status": {
+            "type": "string",
+            "enum": [
+              "queued",
+              "running",
+              "partial",
+              "succeeded",
+              "failed",
+              "interrupted",
+              "cancelled"
+            ],
+            "title": "Status"
+          },
+          "current_stage": {
+            "type": "string",
+            "title": "Current Stage"
+          },
+          "created_at": {
+            "type": "string",
+            "title": "Created At"
+          },
+          "can_retry": {
+            "type": "boolean",
+            "title": "Can Retry"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "id",
+          "topic",
+          "campaign_id",
+          "campaign_name",
+          "parent_job_id",
+          "status",
+          "current_stage",
+          "created_at",
+          "can_retry"
+        ],
+        "title": "JobSummary"
+      },
+      "JobView": {
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Id"
+          },
+          "topic": {
+            "type": "string",
+            "title": "Topic"
+          },
+          "campaign_id": {
+            "anyOf": [
+              {
+                "type": "string",
+                "format": "uuid"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Campaign Id"
+          },
+          "parent_job_id": {
+            "anyOf": [
+              {
+                "type": "string",
+                "format": "uuid"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Parent Job Id"
+          },
+          "can_retry": {
+            "type": "boolean",
+            "title": "Can Retry"
+          },
+          "status": {
+            "type": "string",
+            "enum": [
+              "queued",
+              "running",
+              "partial",
+              "succeeded",
+              "failed",
+              "interrupted",
+              "cancelled"
+            ],
+            "title": "Status"
+          },
+          "current_stage": {
+            "type": "string",
+            "title": "Current Stage"
+          },
+          "stages": {
+            "items": {
+              "additionalProperties": true,
+              "type": "object"
+            },
+            "type": "array",
+            "title": "Stages"
+          },
+          "results": {
+            "items": {
+              "additionalProperties": true,
+              "type": "object"
+            },
+            "type": "array",
+            "title": "Results"
+          },
+          "error": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Error"
+          },
+          "created_at": {
+            "type": "string",
+            "title": "Created At"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "id",
+          "topic",
+          "campaign_id",
+          "parent_job_id",
+          "can_retry",
+          "status",
+          "current_stage",
+          "stages",
+          "results",
+          "error",
+          "created_at"
+        ],
+        "title": "JobView"
+      },
+      "NaturalRevisionRequest": {
+        "properties": {
+          "base_version_id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Base Version Id"
+          },
+          "instruction": {
+            "type": "string",
+            "maxLength": 2000,
+            "minLength": 3,
+            "title": "Instruction"
+          },
+          "scope": {
+            "type": "string",
+            "enum": [
+              "captions",
+              "slides",
+              "both"
+            ],
+            "title": "Scope",
+            "default": "captions"
+          },
+          "platforms": {
+            "items": {
+              "type": "string",
+              "enum": [
+                "instagram",
+                "facebook",
+                "linkedin"
+              ]
+            },
+            "type": "array",
+            "maxItems": 3,
+            "minItems": 1,
+            "title": "Platforms"
+          },
+          "slide_number": {
+            "anyOf": [
+              {
+                "type": "integer",
+                "maximum": 5.0,
+                "minimum": 1.0
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Slide Number"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "base_version_id",
+          "instruction",
+          "platforms"
+        ],
+        "title": "NaturalRevisionRequest"
+      },
+      "PlatformCreative": {
+        "properties": {
+          "slides": {
+            "items": {
+              "$ref": "#/components/schemas/SlideText"
+            },
+            "type": "array",
+            "maxItems": 5,
+            "minItems": 1,
+            "title": "Slides"
+          },
+          "background_design": {
+            "type": "string",
+            "maxLength": 5000,
+            "minLength": 1,
+            "title": "Background Design"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "slides",
+          "background_design"
+        ],
+        "title": "PlatformCreative"
+      },
+      "PlatformPreset": {
+        "properties": {
+          "platform": {
+            "type": "string",
+            "enum": [
+              "instagram",
+              "facebook",
+              "linkedin"
+            ],
+            "title": "Platform"
+          },
+          "preset_id": {
+            "type": "string",
+            "title": "Preset Id"
+          },
+          "name": {
+            "type": "string",
+            "title": "Name"
+          },
+          "width": {
+            "type": "integer",
+            "title": "Width"
+          },
+          "height": {
+            "type": "integer",
+            "title": "Height"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "platform",
+          "preset_id",
+          "name",
+          "width",
+          "height"
+        ],
+        "title": "PlatformPreset"
+      },
+      "PosterPreviewRequest": {
+        "properties": {
+          "base_version_id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Base Version Id"
+          },
+          "concept": {
+            "$ref": "#/components/schemas/GeneratedConcept"
+          },
+          "template_id": {
+            "anyOf": [
+              {
+                "type": "string",
+                "enum": [
+                  "editorial-v1",
+                  "spotlight-v1",
+                  "bulletin-v1"
+                ]
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Template Id"
+          },
+          "platform": {
+            "type": "string",
+            "enum": [
+              "instagram",
+              "facebook",
+              "linkedin"
+            ],
+            "title": "Platform"
+          },
+          "slide_index": {
+            "type": "integer",
+            "maximum": 4.0,
+            "minimum": 0.0,
+            "title": "Slide Index"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "base_version_id",
+          "concept",
+          "platform",
+          "slide_index"
+        ],
+        "title": "PosterPreviewRequest"
+      },
+      "ResearchReport": {
+        "properties": {
+          "schema_version": {
+            "type": "string",
+            "const": "1",
+            "title": "Schema Version",
+            "default": "1"
+          },
+          "id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Id"
+          },
+          "origin": {
+            "type": "string",
+            "enum": [
+              "demo",
+              "live",
+              "provided"
+            ],
+            "title": "Origin"
+          },
+          "topic": {
+            "type": "string",
+            "maxLength": 5000,
+            "minLength": 1,
+            "title": "Topic"
+          },
+          "summary": {
+            "type": "string",
+            "maxLength": 5000,
+            "minLength": 1,
+            "title": "Summary"
+          },
+          "sources": {
+            "items": {
+              "$ref": "#/components/schemas/Source"
+            },
+            "type": "array",
+            "maxItems": 100,
+            "title": "Sources"
+          },
+          "claims": {
+            "items": {
+              "$ref": "#/components/schemas/Claim"
+            },
+            "type": "array",
+            "maxItems": 100,
+            "title": "Claims"
+          },
+          "content_opportunities": {
+            "items": {
+              "type": "string",
+              "maxLength": 5000,
+              "minLength": 1
+            },
+            "type": "array",
+            "title": "Content Opportunities"
+          },
+          "warnings": {
+            "items": {
+              "type": "string",
+              "maxLength": 5000,
+              "minLength": 1
+            },
+            "type": "array",
+            "title": "Warnings"
+          },
+          "limitations": {
+            "items": {
+              "type": "string",
+              "maxLength": 5000,
+              "minLength": 1
+            },
+            "type": "array",
+            "title": "Limitations"
+          },
+          "prepared_at": {
+            "type": "string",
+            "format": "date-time",
+            "title": "Prepared At"
+          },
+          "researched_at": {
+            "anyOf": [
+              {
+                "type": "string",
+                "format": "date-time"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Researched At"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "id",
+          "origin",
+          "topic",
+          "summary",
+          "sources",
+          "claims",
+          "prepared_at"
+        ],
+        "title": "ResearchReport"
+      },
+      "RetryRequest": {
+        "properties": {
+          "artwork_mode": {
+            "anyOf": [
+              {
+                "type": "string",
+                "enum": [
+                  "pollinations",
+                  "application_gradient"
+                ]
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Artwork Mode"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "title": "RetryRequest"
+      },
+      "RevisionRequest": {
+        "properties": {
+          "base_version_id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Base Version Id"
+          },
+          "concept": {
+            "$ref": "#/components/schemas/GeneratedConcept"
+          },
+          "template_id": {
+            "anyOf": [
+              {
+                "type": "string",
+                "enum": [
+                  "editorial-v1",
+                  "spotlight-v1",
+                  "bulletin-v1"
+                ]
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Template Id"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "base_version_id",
+          "concept"
+        ],
+        "title": "RevisionRequest"
+      },
+      "SlideText": {
+        "properties": {
+          "headline": {
+            "type": "string",
+            "maxLength": 160,
+            "minLength": 1,
+            "title": "Headline"
+          },
+          "body": {
+            "type": "string",
+            "maxLength": 1000,
+            "title": "Body"
+          },
+          "cta": {
+            "type": "string",
+            "maxLength": 160,
+            "title": "Cta",
+            "default": ""
+          },
+          "layout": {
+            "type": "string",
+            "enum": [
+              "educational",
+              "promotional",
+              "announcement"
+            ],
+            "title": "Layout"
+          },
+          "claim_ids": {
+            "items": {
+              "type": "string",
+              "maxLength": 5000,
+              "minLength": 1
+            },
+            "type": "array",
+            "title": "Claim Ids"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "headline",
+          "body",
+          "layout"
+        ],
+        "title": "SlideText"
+      },
+      "Source": {
+        "properties": {
+          "id": {
+            "type": "string",
+            "maxLength": 5000,
+            "minLength": 1,
+            "title": "Id"
+          },
+          "url": {
+            "type": "string",
+            "maxLength": 2083,
+            "minLength": 1,
+            "format": "uri",
+            "title": "Url"
+          },
+          "title": {
+            "type": "string",
+            "maxLength": 5000,
+            "minLength": 1,
+            "title": "Title"
+          },
+          "publisher": {
+            "type": "string",
+            "maxLength": 5000,
+            "minLength": 1,
+            "title": "Publisher"
+          },
+          "published_at": {
+            "anyOf": [
+              {
+                "type": "string",
+                "format": "date"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Published At"
+          },
+          "retrieved_at": {
+            "type": "string",
+            "format": "date-time",
+            "title": "Retrieved At"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "id",
+          "url",
+          "title",
+          "publisher",
+          "retrieved_at"
+        ],
+        "title": "Source"
+      },
+      "TemplateView": {
+        "properties": {
+          "id": {
+            "type": "string",
+            "enum": [
+              "editorial-v1",
+              "spotlight-v1",
+              "bulletin-v1"
+            ],
+            "title": "Id"
+          },
+          "name": {
+            "type": "string",
+            "title": "Name"
+          },
+          "description": {
+            "type": "string",
+            "title": "Description"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "id",
+          "name",
+          "description"
+        ],
+        "title": "TemplateView"
+      },
+      "ValidationError": {
+        "properties": {
+          "loc": {
+            "items": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "integer"
+                }
+              ]
+            },
+            "type": "array",
+            "title": "Location"
+          },
+          "msg": {
+            "type": "string",
+            "title": "Message"
+          },
+          "type": {
+            "type": "string",
+            "title": "Error Type"
+          },
+          "input": {
+            "title": "Input"
+          },
+          "ctx": {
+            "type": "object",
+            "title": "Context"
+          }
+        },
+        "type": "object",
+        "required": [
+          "loc",
+          "msg",
+          "type"
+        ],
+        "title": "ValidationError"
+      },
+      "VersionRestoreRequest": {
+        "properties": {
+          "base_version_id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Base Version Id"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "base_version_id"
+        ],
+        "title": "VersionRestoreRequest"
+      },
+      "VersionRestoreResult": {
+        "properties": {
+          "item_id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Item Id"
+          },
+          "version_id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Version Id"
+          },
+          "version_number": {
+            "type": "integer",
+            "title": "Version Number"
+          },
+          "restored_from_version_id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Restored From Version Id"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "item_id",
+          "version_id",
+          "version_number",
+          "restored_from_version_id"
+        ],
+        "title": "VersionRestoreResult"
+      }
+    }
+  }
+}

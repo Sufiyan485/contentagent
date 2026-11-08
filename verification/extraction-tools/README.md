@@ -1,0 +1,1 @@
+These are historical one-time extraction scripts/inputs, retained for audit. Do not rerun them. Some refer to the original source path and assume their initial location. Normal usage requires only backend/, assets/, requirements and tools/run.ps1.

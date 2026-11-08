@@ -1,0 +1,11 @@
+--- original/backend/tests/test_hashtags.py
++++ standalone/backend/tests/test_hashtags.py
+@@ -22,7 +22,7 @@
+ 
+ 
+ def setup_agent(tags, text='Learning about data.'):
+-    report = ResearchReport.model_validate_json((ROOT / 'demo_reports/01-machine-learning.json').read_text())
++    report = ResearchReport.model_validate_json((ROOT / 'tests/fixtures/reports/01-machine-learning.json').read_text())
+     request = GenerationRequest(topic=report.topic, report_id=report.id, slide_count=2)
+     data = FixtureText().generate('', '', '')
+     data['concepts'][0]['captions'][0].update(hashtags=tags, text=text)

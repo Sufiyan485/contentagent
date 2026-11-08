@@ -1,0 +1,16 @@
+{
+  "checked_at": 1794127823.3286426,
+  "initial_reviewed_head": "7b220c9d6b3946ceee583e202cb49da3dd2085ea",
+  "final_head": "7b220c9d6b3946ceee583e202cb49da3dd2085ea",
+  "initial_reviewed_status": [],
+  "final_status": [],
+  "reviewed_tracked_count": 264,
+  "tracked_mismatches": [],
+  "extended_baseline_count": 22081,
+  "extended_final_count": 22081,
+  "extended_added": [],
+  "extended_removed": [],
+  "extended_changed": [],
+  "read_errors": [],
+  "scope": "Regular files found by non-link-following traversal, including ignored runtime/dependency/Git files. Symlink/junction target trees are not followed. Baselines are sequential scans, not atomic filesystem snapshots."
+}

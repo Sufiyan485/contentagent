@@ -1,0 +1,269 @@
+{
+  "$defs": {
+    "Claim": {
+      "additionalProperties": false,
+      "properties": {
+        "id": {
+          "maxLength": 5000,
+          "minLength": 1,
+          "title": "Id",
+          "type": "string"
+        },
+        "text": {
+          "maxLength": 5000,
+          "minLength": 1,
+          "title": "Text",
+          "type": "string"
+        },
+        "verification_status": {
+          "enum": [
+            "unverified",
+            "supported",
+            "contradicted",
+            "mixed"
+          ],
+          "title": "Verification Status",
+          "type": "string"
+        },
+        "verification_method": {
+          "maxLength": 5000,
+          "minLength": 1,
+          "title": "Verification Method",
+          "type": "string"
+        },
+        "evidence": {
+          "items": {
+            "$ref": "#/$defs/Evidence"
+          },
+          "title": "Evidence",
+          "type": "array"
+        },
+        "limitations": {
+          "items": {
+            "maxLength": 5000,
+            "minLength": 1,
+            "type": "string"
+          },
+          "title": "Limitations",
+          "type": "array"
+        }
+      },
+      "required": [
+        "id",
+        "text",
+        "verification_status",
+        "verification_method"
+      ],
+      "title": "Claim",
+      "type": "object"
+    },
+    "Evidence": {
+      "additionalProperties": false,
+      "properties": {
+        "source_id": {
+          "maxLength": 5000,
+          "minLength": 1,
+          "title": "Source Id",
+          "type": "string"
+        },
+        "excerpt": {
+          "maxLength": 5000,
+          "minLength": 1,
+          "title": "Excerpt",
+          "type": "string"
+        },
+        "locator": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Locator"
+        },
+        "relation": {
+          "enum": [
+            "supports",
+            "contradicts"
+          ],
+          "title": "Relation",
+          "type": "string"
+        }
+      },
+      "required": [
+        "source_id",
+        "excerpt",
+        "relation"
+      ],
+      "title": "Evidence",
+      "type": "object"
+    },
+    "Source": {
+      "additionalProperties": false,
+      "properties": {
+        "id": {
+          "maxLength": 5000,
+          "minLength": 1,
+          "title": "Id",
+          "type": "string"
+        },
+        "url": {
+          "format": "uri",
+          "maxLength": 2083,
+          "minLength": 1,
+          "title": "Url",
+          "type": "string"
+        },
+        "title": {
+          "maxLength": 5000,
+          "minLength": 1,
+          "title": "Title",
+          "type": "string"
+        },
+        "publisher": {
+          "maxLength": 5000,
+          "minLength": 1,
+          "title": "Publisher",
+          "type": "string"
+        },
+        "published_at": {
+          "anyOf": [
+            {
+              "format": "date",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Published At"
+        },
+        "retrieved_at": {
+          "format": "date-time",
+          "title": "Retrieved At",
+          "type": "string"
+        }
+      },
+      "required": [
+        "id",
+        "url",
+        "title",
+        "publisher",
+        "retrieved_at"
+      ],
+      "title": "Source",
+      "type": "object"
+    }
+  },
+  "additionalProperties": false,
+  "properties": {
+    "schema_version": {
+      "const": "1",
+      "default": "1",
+      "title": "Schema Version",
+      "type": "string"
+    },
+    "id": {
+      "format": "uuid",
+      "title": "Id",
+      "type": "string"
+    },
+    "origin": {
+      "enum": [
+        "demo",
+        "live",
+        "provided"
+      ],
+      "title": "Origin",
+      "type": "string"
+    },
+    "topic": {
+      "maxLength": 5000,
+      "minLength": 1,
+      "title": "Topic",
+      "type": "string"
+    },
+    "summary": {
+      "maxLength": 5000,
+      "minLength": 1,
+      "title": "Summary",
+      "type": "string"
+    },
+    "sources": {
+      "items": {
+        "$ref": "#/$defs/Source"
+      },
+      "maxItems": 100,
+      "title": "Sources",
+      "type": "array"
+    },
+    "claims": {
+      "items": {
+        "$ref": "#/$defs/Claim"
+      },
+      "maxItems": 100,
+      "title": "Claims",
+      "type": "array"
+    },
+    "content_opportunities": {
+      "items": {
+        "maxLength": 5000,
+        "minLength": 1,
+        "type": "string"
+      },
+      "title": "Content Opportunities",
+      "type": "array"
+    },
+    "warnings": {
+      "items": {
+        "maxLength": 5000,
+        "minLength": 1,
+        "type": "string"
+      },
+      "title": "Warnings",
+      "type": "array"
+    },
+    "limitations": {
+      "items": {
+        "maxLength": 5000,
+        "minLength": 1,
+        "type": "string"
+      },
+      "title": "Limitations",
+      "type": "array"
+    },
+    "prepared_at": {
+      "format": "date-time",
+      "title": "Prepared At",
+      "type": "string"
+    },
+    "researched_at": {
+      "anyOf": [
+        {
+          "format": "date-time",
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Researched At"
+    }
+  },
+  "required": [
+    "id",
+    "origin",
+    "topic",
+    "summary",
+    "sources",
+    "claims",
+    "prepared_at"
+  ],
+  "title": "ResearchReport",
+  "type": "object"
+}

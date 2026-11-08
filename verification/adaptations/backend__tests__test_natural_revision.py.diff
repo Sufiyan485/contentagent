@@ -1,0 +1,30 @@
+--- original/backend/tests/test_natural_revision.py
++++ standalone/backend/tests/test_natural_revision.py
+@@ -50,13 +50,11 @@
+     return response.json()['id']
+ 
+ 
+-def test_scope_assets_approval_retry_restart_and_purge(tmp_path):
++def test_scope_assets_retry_and_restart(tmp_path):
+     settings=Settings(_env_file=None,app_data_dir=tmp_path)
+     app=create_app(settings,start_worker=False)
+     with TestClient(app) as c:
+         original,fixture=seed(app,c)
+-        review=c.get(f"/api/v1/content/{original['id']}/review").json()
+-        assert c.post(f"/api/v1/content/{original['id']}/versions/{original['version_id']}/approvals",json={'decision':'approve','payload_digest':review['payload_digest'],'warnings_acknowledged':True}).status_code==200
+         calls=[];render=app.state.workflow.renderer.render
+         def tracked(*args,**kwargs): calls.append(kwargs.get('platform'));return render(*args,**kwargs)
+         app.state.workflow.renderer.render=tracked
+@@ -88,11 +86,7 @@
+         assert history[-1]['concept']==original['concept']
+     with TestClient(create_app(settings,start_worker=False)) as c:
+         assert c.get('/api/v1/content/'+original['id']).json()==result
+-        c.post(f"/api/v1/content/{original['id']}/trash",json={})
+-        assert c.post(f"/api/v1/content/{original['id']}/delete-permanently",json={'version_id':result['version_id'],'confirmation':'DELETE'}).status_code==200
+-        with Session(c.app.state.engine) as db:
+-            assert 'base' not in db.get(GenerationJob,job).snapshot['natural_revision']
+-            assert 'base' not in db.get(GenerationJob,retried).snapshot['natural_revision']
++
+ 
+ 
+ @pytest.mark.parametrize('bad',['citation','scope'])

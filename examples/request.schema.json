@@ -1,0 +1,210 @@
+{
+  "additionalProperties": false,
+  "properties": {
+    "creative_mode": {
+      "default": "shared",
+      "enum": [
+        "shared",
+        "distinct_platforms"
+      ],
+      "title": "Creative Mode",
+      "type": "string"
+    },
+    "export_mode": {
+      "default": "per_platform",
+      "enum": [
+        "per_platform",
+        "shared_square"
+      ],
+      "title": "Export Mode",
+      "type": "string"
+    },
+    "background_theme": {
+      "default": "dark",
+      "enum": [
+        "light",
+        "dark",
+        "colorful"
+      ],
+      "title": "Background Theme",
+      "type": "string"
+    },
+    "hashtag_count": {
+      "default": 3,
+      "maximum": 10,
+      "minimum": 0,
+      "title": "Hashtag Count",
+      "type": "integer"
+    },
+    "caption_length": {
+      "default": "balanced",
+      "enum": [
+        "concise",
+        "balanced",
+        "detailed"
+      ],
+      "title": "Caption Length",
+      "type": "string"
+    },
+    "template_id": {
+      "default": "editorial-v1",
+      "enum": [
+        "editorial-v1",
+        "spotlight-v1",
+        "bulletin-v1"
+      ],
+      "title": "Template Id",
+      "type": "string"
+    },
+    "topic": {
+      "maxLength": 5000,
+      "minLength": 1,
+      "title": "Topic",
+      "type": "string"
+    },
+    "report_id": {
+      "format": "uuid",
+      "title": "Report Id",
+      "type": "string"
+    },
+    "campaign_id": {
+      "anyOf": [
+        {
+          "format": "uuid",
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Campaign Id"
+    },
+    "content_type": {
+      "default": "educational",
+      "enum": [
+        "educational",
+        "promotional",
+        "informational",
+        "announcement"
+      ],
+      "title": "Content Type",
+      "type": "string"
+    },
+    "audience": {
+      "default": "Beginners",
+      "maxLength": 5000,
+      "minLength": 1,
+      "title": "Audience",
+      "type": "string"
+    },
+    "tone": {
+      "default": "Clear and professional",
+      "maxLength": 5000,
+      "minLength": 1,
+      "title": "Tone",
+      "type": "string"
+    },
+    "platforms": {
+      "items": {
+        "enum": [
+          "instagram",
+          "facebook",
+          "linkedin"
+        ],
+        "type": "string"
+      },
+      "maxItems": 3,
+      "minItems": 1,
+      "title": "Platforms",
+      "type": "array"
+    },
+    "visual_style": {
+      "default": "Clean editorial",
+      "maxLength": 5000,
+      "minLength": 1,
+      "title": "Visual Style",
+      "type": "string"
+    },
+    "background_subject": {
+      "default": "",
+      "maxLength": 500,
+      "title": "Background Subject",
+      "type": "string"
+    },
+    "brand_profile_id": {
+      "anyOf": [
+        {
+          "format": "uuid",
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Brand Profile Id"
+    },
+    "concept_count": {
+      "default": 1,
+      "maximum": 3,
+      "minimum": 1,
+      "title": "Concept Count",
+      "type": "integer"
+    },
+    "slide_count": {
+      "default": 1,
+      "maximum": 5,
+      "minimum": 1,
+      "title": "Slide Count",
+      "type": "integer"
+    },
+    "customization_mode": {
+      "default": "automatic",
+      "enum": [
+        "automatic",
+        "custom"
+      ],
+      "title": "Customization Mode",
+      "type": "string"
+    },
+    "approved_user_facts": {
+      "items": {
+        "maxLength": 5000,
+        "minLength": 1,
+        "type": "string"
+      },
+      "maxItems": 50,
+      "title": "Approved User Facts",
+      "type": "array"
+    },
+    "artwork_mode": {
+      "default": "pollinations",
+      "enum": [
+        "pollinations",
+        "application_gradient"
+      ],
+      "title": "Artwork Mode",
+      "type": "string"
+    },
+    "brand_name": {
+      "default": "Content Studio",
+      "maxLength": 60,
+      "minLength": 1,
+      "title": "Brand Name",
+      "type": "string"
+    },
+    "brand_color": {
+      "default": "#2563eb",
+      "pattern": "^#[0-9a-fA-F]{6}$",
+      "title": "Brand Color",
+      "type": "string"
+    }
+  },
+  "required": [
+    "topic",
+    "report_id"
+  ],
+  "title": "GenerationRequest",
+  "type": "object"
+}

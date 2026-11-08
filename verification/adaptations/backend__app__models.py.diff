@@ -1,0 +1,283 @@
+--- original/backend/app/models.py
++++ standalone/backend/app/models.py
+@@ -1,7 +1,12 @@
+ from datetime import datetime, timezone
++
++
+ from uuid import uuid4
+ 
++
+ from sqlalchemy import JSON, String, Text, ForeignKey, Integer, UniqueConstraint
++
++
+ from sqlalchemy.orm import DeclarativeBase, Mapped, mapped_column
+ 
+ 
+@@ -11,35 +16,6 @@
+ 
+ class Base(DeclarativeBase):
+     pass
+-
+-
+-class MetaConnection(Base):
+-    __tablename__ = 'meta_connection'
+-    id: Mapped[int] = mapped_column(Integer, primary_key=True)
+-    encrypted_token: Mapped[str] = mapped_column(Text)
+-    config_digest: Mapped[str] = mapped_column(String(64))
+-    snapshot: Mapped[dict] = mapped_column(JSON)
+-    checked_at: Mapped[str] = mapped_column(String(40))
+-    error: Mapped[str | None] = mapped_column(String(300), nullable=True)
+-
+-
+-class MetaConnectionAttempt(Base):
+-    __tablename__ = 'meta_connection_attempt'
+-    id: Mapped[int] = mapped_column(Integer, primary_key=True)
+-    state_hash: Mapped[str] = mapped_column(String(64))
+-    expires_at: Mapped[int] = mapped_column(Integer)
+-    status: Mapped[str] = mapped_column(String(20))
+-    message: Mapped[str] = mapped_column(Text)
+-    updated_at: Mapped[str] = mapped_column(String(40))
+-
+-
+-class MetaOAuthState(Base):
+-    __tablename__ = 'meta_oauth_states'
+-    state_hash: Mapped[str] = mapped_column(String(64), primary_key=True)
+-    browser_hash: Mapped[str] = mapped_column(String(64))
+-    config_digest: Mapped[str] = mapped_column(String(64))
+-    expires_at: Mapped[int] = mapped_column(Integer)
+-    status: Mapped[str] = mapped_column(String(20))
+ 
+ 
+ class Campaign(Base):
+@@ -56,33 +32,6 @@
+     origin: Mapped[str] = mapped_column(String(10))
+     topic: Mapped[str] = mapped_column(String(5000))
+     snapshot: Mapped[dict] = mapped_column(JSON)
+-    created_at: Mapped[str] = mapped_column(String(40), default=now_iso, index=True)
+-
+-
+-class ResearchJob(Base):
+-    __tablename__ = 'research_jobs'
+-    id: Mapped[str] = mapped_column(String(36), primary_key=True, default=lambda: str(uuid4()))
+-    idempotency_key: Mapped[str] = mapped_column(String(128), unique=True)
+-    request_hash: Mapped[str] = mapped_column(String(64))
+-    status: Mapped[str] = mapped_column(String(20), default='queued')
+-    current_stage: Mapped[str] = mapped_column(String(40), default='plan')
+-    snapshot: Mapped[dict] = mapped_column(JSON)
+-    checkpoint: Mapped[dict] = mapped_column(JSON, default=dict)
+-    report_id: Mapped[str | None] = mapped_column(ForeignKey('research_runs.id'), nullable=True)
+-    error: Mapped[str | None] = mapped_column(String(500), nullable=True)
+-    created_at: Mapped[str] = mapped_column(String(40), default=now_iso, index=True)
+-
+-
+-class CoordinatorJob(Base):
+-    __tablename__ = 'coordinator_jobs'
+-    id: Mapped[str] = mapped_column(String(36), primary_key=True, default=lambda: str(uuid4()))
+-    idempotency_key: Mapped[str] = mapped_column(String(128), unique=True)
+-    request_hash: Mapped[str] = mapped_column(String(64))
+-    status: Mapped[str] = mapped_column(String(20), default='queued')
+-    current_stage: Mapped[str] = mapped_column(String(30), default='route')
+-    snapshot: Mapped[dict] = mapped_column(JSON)
+-    checkpoint: Mapped[dict] = mapped_column(JSON, default=dict)
+-    error: Mapped[str | None] = mapped_column(String(500), nullable=True)
+     created_at: Mapped[str] = mapped_column(String(40), default=now_iso, index=True)
+ 
+ 
+@@ -127,12 +76,6 @@
+     deleted_at: Mapped[str | None] = mapped_column(String(40), nullable=True)
+ 
+ 
+-class AssetCleanup(Base):
+-    __tablename__ = 'asset_cleanup'
+-    id: Mapped[str] = mapped_column(String(36), primary_key=True)
+-    storage_key: Mapped[str] = mapped_column(String(200))
+-
+-
+ class ContentVersion(Base):
+     __tablename__ = 'content_versions'
+     __table_args__ = (UniqueConstraint('item_id', 'version_number'), UniqueConstraint('item_id', 'job_id'))
+@@ -144,184 +87,3 @@
+     payload_digest: Mapped[str] = mapped_column(String(64))
+     created_at: Mapped[str] = mapped_column(String(40), default=now_iso)
+ 
+-
+-class Approval(Base):
+-    __tablename__ = 'approvals'
+-    sequence: Mapped[int] = mapped_column(Integer, primary_key=True, autoincrement=True)
+-    id: Mapped[str] = mapped_column(String(36), unique=True, default=lambda: str(uuid4()))
+-    version_id: Mapped[str] = mapped_column(ForeignKey('content_versions.id'), index=True)
+-    payload_digest: Mapped[str] = mapped_column(String(64))
+-    decision: Mapped[str] = mapped_column(String(20))
+-    reviewer: Mapped[str] = mapped_column(String(120))
+-    reason: Mapped[str] = mapped_column(String(1000))
+-    created_at: Mapped[str] = mapped_column(String(40), default=now_iso)
+-
+-
+-class PublishingJob(Base):
+-    __tablename__ = 'publishing_jobs'
+-    id: Mapped[str] = mapped_column(String(36), primary_key=True, default=lambda: str(uuid4()))
+-    idempotency_key: Mapped[str] = mapped_column(String(128), unique=True)
+-    request_hash: Mapped[str] = mapped_column(String(64))
+-    item_id: Mapped[str] = mapped_column(String(36))
+-    version_id: Mapped[str] = mapped_column(String(36))
+-    approval_id: Mapped[str] = mapped_column(String(36))
+-    payload_digest: Mapped[str] = mapped_column(String(64))
+-    mode: Mapped[str] = mapped_column(String(20), default='mock')
+-    scheduled_at: Mapped[str] = mapped_column(String(40))
+-    timezone: Mapped[str] = mapped_column(String(100))
+-    created_at: Mapped[str] = mapped_column(String(40), default=now_iso)
+-
+-
+-class PublishingTarget(Base):
+-    __tablename__ = 'publishing_targets'
+-    id: Mapped[str] = mapped_column(String(36), primary_key=True, default=lambda: str(uuid4()))
+-    job_id: Mapped[str] = mapped_column(ForeignKey('publishing_jobs.id'), index=True)
+-    platform: Mapped[str] = mapped_column(String(20))
+-    dedupe_key: Mapped[str] = mapped_column(String(64), unique=True)
+-    status: Mapped[str] = mapped_column(String(30), default='queued')
+-    error: Mapped[str | None] = mapped_column(String(500), nullable=True)
+-    receipt_id: Mapped[str | None] = mapped_column(String(80), nullable=True)
+-
+-
+-class PublishingAttempt(Base):
+-    __tablename__ = 'publishing_attempts'
+-    id: Mapped[int] = mapped_column(Integer, primary_key=True, autoincrement=True)
+-    target_id: Mapped[str] = mapped_column(ForeignKey('publishing_targets.id'), index=True)
+-    approval_id: Mapped[str] = mapped_column(String(36))
+-    status: Mapped[str] = mapped_column(String(30), default='started')
+-    started_at: Mapped[str] = mapped_column(String(40), default=now_iso)
+-    finished_at: Mapped[str | None] = mapped_column(String(40), nullable=True)
+-    error: Mapped[str | None] = mapped_column(String(500), nullable=True)
+-
+-
+-class SimulatedReceipt(Base):
+-    __tablename__ = 'simulated_receipts'
+-    id: Mapped[str] = mapped_column(String(80), primary_key=True)
+-    dedupe_key: Mapped[str] = mapped_column(String(64), unique=True)
+-    payload_digest: Mapped[str] = mapped_column(String(64))
+-    created_at: Mapped[str] = mapped_column(String(40), default=now_iso)
+-
+-
+-class PublicationCheck(Base):
+-    """Minimal read-only reconciliation audit, retained with publishing receipts."""
+-    __tablename__ = 'publication_checks'
+-    id: Mapped[str] = mapped_column(String(36), primary_key=True, default=lambda: str(uuid4()))
+-    platform: Mapped[str] = mapped_column(String(20))
+-    publication_id: Mapped[str] = mapped_column(String(36), index=True)
+-    started_at: Mapped[str] = mapped_column(String(40), default=now_iso)
+-    finished_at: Mapped[str | None] = mapped_column(String(40), nullable=True)
+-    outcome: Mapped[str] = mapped_column(String(20), default='checking')
+-    message: Mapped[str] = mapped_column(String(500))
+-
+-
+-class ManualPublication(Base):
+-    """User-reported manual delivery; never a provider-verified receipt."""
+-    __tablename__ = 'manual_publications'
+-    __table_args__ = (UniqueConstraint('version_id', 'platform'),)
+-    id: Mapped[str] = mapped_column(String(36), primary_key=True, default=lambda: str(uuid4()))
+-    idempotency_key: Mapped[str] = mapped_column(String(128), unique=True)
+-    request_hash: Mapped[str] = mapped_column(String(64))
+-    item_id: Mapped[str] = mapped_column(String(36), index=True)
+-    version_id: Mapped[str] = mapped_column(String(36))
+-    approval_id: Mapped[str] = mapped_column(String(36))
+-    payload_digest: Mapped[str] = mapped_column(String(64))
+-    platform: Mapped[str] = mapped_column(String(20))
+-    page_name: Mapped[str] = mapped_column(String(120))
+-    post_url: Mapped[str | None] = mapped_column(String(600), nullable=True)
+-    recorded_at: Mapped[str] = mapped_column(String(40), default=now_iso)
+-
+-
+-class PublicationSchedule(Base):
+-    """Timing audit retained with publication receipts when content is purged."""
+-    __tablename__ = 'publication_schedules'
+-    __table_args__ = (UniqueConstraint('platform', 'publication_id'),)
+-    id: Mapped[str] = mapped_column(String(36), primary_key=True, default=lambda: str(uuid4()))
+-    platform: Mapped[str] = mapped_column(String(20))
+-    publication_id: Mapped[str] = mapped_column(String(36))
+-    scheduled_at: Mapped[str] = mapped_column(String(40), index=True)
+-    timezone: Mapped[str] = mapped_column(String(100))
+-    local_time: Mapped[str] = mapped_column(String(40))
+-    deadline_at: Mapped[str] = mapped_column(String(40))
+-    confirmed_at: Mapped[str] = mapped_column(String(40), default=now_iso)
+-
+-
+-class FacebookPublication(Base):
+-    """Minimal durable write intent/receipt; retained when local content is purged."""
+-    __tablename__ = 'facebook_publications'
+-    id: Mapped[str] = mapped_column(String(36), primary_key=True, default=lambda: str(uuid4()))
+-    idempotency_key: Mapped[str] = mapped_column(String(128), unique=True)
+-    request_hash: Mapped[str] = mapped_column(String(64))
+-    item_id: Mapped[str] = mapped_column(String(36), index=True)
+-    version_id: Mapped[str] = mapped_column(String(36), index=True)
+-    approval_id: Mapped[str] = mapped_column(String(36))
+-    payload_digest: Mapped[str] = mapped_column(String(64))
+-    page_id: Mapped[str] = mapped_column(String(40))
+-    page_name: Mapped[str] = mapped_column(String(200))
+-    connection_digest: Mapped[str] = mapped_column(String(64))
+-    status: Mapped[str] = mapped_column(String(30), default='queued', index=True)
+-    created_at: Mapped[str] = mapped_column(String(40), default=now_iso)
+-    started_at: Mapped[str | None] = mapped_column(String(40), nullable=True)
+-    finished_at: Mapped[str | None] = mapped_column(String(40), nullable=True)
+-    error: Mapped[str | None] = mapped_column(String(500), nullable=True)
+-    photo_id: Mapped[str | None] = mapped_column(String(40), nullable=True)
+-    post_id: Mapped[str | None] = mapped_column(String(81), nullable=True)
+-    cleanup_status: Mapped[str] = mapped_column(String(20), default='none', server_default='none')
+-    cleanup_error: Mapped[str | None] = mapped_column(String(500), nullable=True)
+-    next_cleanup_at: Mapped[str | None] = mapped_column(String(40), nullable=True)
+-
+-
+-class FacebookPublicationSlide(Base):
+-    __tablename__ = 'facebook_publication_slides'
+-    __table_args__ = (UniqueConstraint('publication_id', 'position'),)
+-    id: Mapped[str] = mapped_column(String(36), primary_key=True, default=lambda: str(uuid4()))
+-    publication_id: Mapped[str] = mapped_column(ForeignKey('facebook_publications.id', ondelete='CASCADE'), index=True)
+-    position: Mapped[int] = mapped_column(Integer)
+-    asset_id: Mapped[str] = mapped_column(String(36))
+-    checksum: Mapped[str] = mapped_column(String(64))
+-    upload_status: Mapped[str] = mapped_column(String(20), default='none')
+-    photo_id: Mapped[str | None] = mapped_column(String(40), nullable=True)
+-    cleanup_status: Mapped[str] = mapped_column(String(20), default='none')
+-
+-
+-class InstagramPublication(Base):
+-    """External write boundaries and hosting cleanup survive content deletion."""
+-    __tablename__ = 'instagram_publications'
+-    id: Mapped[str] = mapped_column(String(36), primary_key=True, default=lambda: str(uuid4()))
+-    idempotency_key: Mapped[str] = mapped_column(String(128), unique=True)
+-    request_hash: Mapped[str] = mapped_column(String(64))
+-    item_id: Mapped[str] = mapped_column(String(36), index=True)
+-    version_id: Mapped[str] = mapped_column(String(36), index=True)
+-    approval_id: Mapped[str] = mapped_column(String(36))
+-    payload_digest: Mapped[str] = mapped_column(String(64))
+-    jpeg_checksum: Mapped[str] = mapped_column(String(64))
+-    instagram_id: Mapped[str] = mapped_column(String(40))
+-    instagram_username: Mapped[str] = mapped_column(String(100))
+-    connection_digest: Mapped[str] = mapped_column(String(64))
+-    host_digest: Mapped[str] = mapped_column(String(64))
+-    status: Mapped[str] = mapped_column(String(30), default='queued', index=True)
+-    created_at: Mapped[str] = mapped_column(String(40), default=now_iso)
+-    started_at: Mapped[str | None] = mapped_column(String(40), nullable=True)
+-    finished_at: Mapped[str | None] = mapped_column(String(40), nullable=True)
+-    next_check_at: Mapped[str | None] = mapped_column(String(40), nullable=True)
+-    error: Mapped[str | None] = mapped_column(String(500), nullable=True)
+-    media_url: Mapped[str | None] = mapped_column(Text, nullable=True)
+-    container_id: Mapped[str | None] = mapped_column(String(40), nullable=True)
+-    media_id: Mapped[str | None] = mapped_column(String(40), nullable=True)
+-    permalink: Mapped[str | None] = mapped_column(String(300), nullable=True)
+-    cleanup_status: Mapped[str] = mapped_column(String(20), default='none')
+-    cleanup_error: Mapped[str | None] = mapped_column(String(500), nullable=True)
+-
+-
+-class InstagramPublicationSlide(Base):
+-    __tablename__ = 'instagram_publication_slides'
+-    __table_args__ = (UniqueConstraint('publication_id', 'position'),)
+-    id: Mapped[str] = mapped_column(String(36), primary_key=True)
+-    publication_id: Mapped[str] = mapped_column(ForeignKey('instagram_publications.id', ondelete='CASCADE'), index=True)
+-    position: Mapped[int] = mapped_column(Integer)
+-    asset_id: Mapped[str | None] = mapped_column(String(36), nullable=True)
+-    jpeg_checksum: Mapped[str] = mapped_column(String(64))
+-    upload_status: Mapped[str] = mapped_column(String(20), default='none')
+-    media_url: Mapped[str | None] = mapped_column(Text, nullable=True)
+-    container_id: Mapped[str | None] = mapped_column(String(40), nullable=True)
+-    container_status: Mapped[str | None] = mapped_column(String(20), nullable=True)
+-    cleanup_status: Mapped[str] = mapped_column(String(20), default='none')

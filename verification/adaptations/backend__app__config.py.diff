@@ -1,0 +1,40 @@
+--- original/backend/app/config.py
++++ standalone/backend/app/config.py
+@@ -14,32 +14,19 @@
+     content_provider: Provider = 'groq'
+     content_model: str = 'openai/gpt-oss-120b'
+     content_api_key: SecretStr = SecretStr('')
+-    research_provider: Provider = 'gemini'
+-    research_model: str = ''
+-    research_api_key: SecretStr = SecretStr('')
+     pollinations_api_key: SecretStr = SecretStr('')
+     pollinations_model: str = ''
+     artwork_max_attempts: int = Field(default=2, ge=1, le=3)
+-    search_provider: str = 'tavily'
+-    search_api_key: SecretStr = SecretStr('')
+     pollinations_negative_prompt: str = 'text, typography, letters, words, numbers, captions, subtitles, logos, watermarks, signatures, fake writing, gibberish, random characters, text-like patterns, UI elements, labels, signs containing text, poster text, finished poster designs, typography overlays'
+-    app_allowed_origins: list[str] = ['http://127.0.0.1:5173', 'http://localhost:5173', 'http://127.0.0.1:8000', 'http://localhost:8000']
+-    meta_app_id: str = ''
+-    meta_app_secret: SecretStr = SecretStr('')
+-    meta_login_config_id: str = ''
+-    meta_graph_version: str = ''
+-    meta_page_id: str = ''
+-    meta_instagram_account_id: str = ''
+-    meta_token_encryption_key: SecretStr = SecretStr('')
+-    meta_redirect_uri: str = 'http://localhost:8000/api/v1/social/meta/callback'
+-    cloudinary_cloud_name: str = ''
+-    cloudinary_api_key: SecretStr = SecretStr('')
+-    cloudinary_api_secret: SecretStr = SecretStr('')
++    app_allowed_origins: list[str] = ['http://127.0.0.1:8001', 'http://localhost:8001']
+ 
+     @property
+     def data_dir(self) -> Path:
+         path = self.app_data_dir
+-        return (path if path.is_absolute() else ROOT / path).resolve()
++        resolved = (path if path.is_absolute() else ROOT / path).resolve()
++        if not resolved.is_relative_to(ROOT.resolve()) or resolved == ROOT.resolve():
++            raise ValueError('APP_DATA_DIR must be a subdirectory inside this standalone project.')
++        return resolved
+ 
+     @property
+     def database_path(self) -> Path:

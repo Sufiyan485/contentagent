@@ -1,0 +1,16 @@
+--- original/backend/tests/test_text_reliability.py
++++ standalone/backend/tests/test_text_reliability.py
+@@ -95,12 +95,7 @@
+         assert fixture.calls==2
+         assert client.get('/api/v1/generation-jobs/'+job).json()['status']=='succeeded'
+         assert client.get('/api/v1/content').json()['total']==3
+-        item=client.get('/api/v1/content').json()['items'][0]
+-        assert client.post(f"/api/v1/content/{item['id']}/trash",json={}).status_code==200
+-        assert client.post(f"/api/v1/content/{item['id']}/delete-permanently",json={'version_id':item['version_id'],'confirmation':'DELETE'}).status_code==200
+-        with Session(app.state.engine) as db:
+-            parts=db.get(GenerationJob,job).checkpoint['text_parts']['instagram']
+-            assert sum(p is None for p in parts)==1
++
+ 
+ 
+ def test_correction_survives_capacity_wait(tmp_path):

@@ -1,0 +1,66 @@
+{
+  "schema_version": "1",
+  "id": "10000000-0000-4000-8000-000000000003",
+  "origin": "demo",
+  "topic": "Cybersecurity Awareness",
+  "summary": "Account protection and recognizing attempts to steal sensitive information.",
+  "sources": [
+    {
+      "id": "s1",
+      "url": "https://www.nist.gov/itl/smallbusinesscyber/guidance-topic/multi-factor-authentication",
+      "title": "Multi-Factor Authentication",
+      "publisher": "NIST",
+      "published_at": null,
+      "retrieved_at": "2026-10-21T00:00:00Z"
+    }
+  ],
+  "claims": [
+    {
+      "id": "c1",
+      "text": "MFA asks for more than one type of identity evidence, such as a password plus a security key.",
+      "verification_status": "supported",
+      "verification_method": "Manually checked against the linked source on 2026-10-21; not independent empirical verification.",
+      "evidence": [
+        {
+          "source_id": "s1",
+          "excerpt": "a combination of two or more",
+          "locator": "What is Multi-Factor Authentication?",
+          "relation": "supports"
+        }
+      ],
+      "limitations": [
+        "Source support does not guarantee universal applicability."
+      ]
+    },
+    {
+      "id": "c2",
+      "text": "Phishing attempts to persuade people to disclose sensitive information to an impersonator.",
+      "verification_status": "supported",
+      "verification_method": "Manually checked against the linked source on 2026-10-21; not independent empirical verification.",
+      "evidence": [
+        {
+          "source_id": "s1",
+          "excerpt": "convince you to hand over sensitive information to an imposter",
+          "locator": "Protecting Your Business from a Common Cyber Threat: Phishing",
+          "relation": "supports"
+        }
+      ],
+      "limitations": [
+        "Source support does not guarantee universal applicability."
+      ]
+    }
+  ],
+  "content_opportunities": [
+    "Explain the know/have/are authentication factors.",
+    "Create a pause-and-check reminder for suspicious messages."
+  ],
+  "warnings": [
+    "Manually prepared demo report; no live Research Agent was used."
+  ],
+  "limitations": [
+    "Introductory material, not an exhaustive literature review.",
+    "No quantitative performance, security, or business outcome guarantees."
+  ],
+  "prepared_at": "2026-10-21T00:00:00Z",
+  "researched_at": null
+}

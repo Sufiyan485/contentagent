@@ -1,0 +1,66 @@
+{
+  "schema_version": "1",
+  "id": "10000000-0000-4000-8000-000000000002",
+  "origin": "demo",
+  "topic": "Generative AI and Its Applications",
+  "summary": "Generative AI can assist content creation, but generated material needs review.",
+  "sources": [
+    {
+      "id": "s1",
+      "url": "https://www.ibm.com/think/topics/generative-ai",
+      "title": "What is generative AI?",
+      "publisher": "IBM",
+      "published_at": "2024-03-22",
+      "retrieved_at": "2026-10-21T00:00:00Z"
+    }
+  ],
+  "claims": [
+    {
+      "id": "c1",
+      "text": "Generative AI can produce text, pictures, audio, video, and code in response to requests.",
+      "verification_status": "supported",
+      "verification_method": "Manually checked against the linked source on 2026-10-21; not independent empirical verification.",
+      "evidence": [
+        {
+          "source_id": "s1",
+          "excerpt": "text, images, video, audio or software code",
+          "locator": "What is generative AI?",
+          "relation": "supports"
+        }
+      ],
+      "limitations": [
+        "Source support does not guarantee universal applicability."
+      ]
+    },
+    {
+      "id": "c2",
+      "text": "Generated output can sound plausible while being incorrect.",
+      "verification_status": "supported",
+      "verification_method": "Manually checked against the linked source on 2026-10-21; not independent empirical verification.",
+      "evidence": [
+        {
+          "source_id": "s1",
+          "excerpt": "nonsensical or altogether inaccurate",
+          "locator": "Hallucinations and other inaccurate outputs",
+          "relation": "supports"
+        }
+      ],
+      "limitations": [
+        "Source support does not guarantee universal applicability."
+      ]
+    }
+  ],
+  "content_opportunities": [
+    "Show practical draft-writing and coding assistance examples.",
+    "Explain why human review remains part of an AI workflow."
+  ],
+  "warnings": [
+    "Manually prepared demo report; no live Research Agent was used."
+  ],
+  "limitations": [
+    "Introductory material, not an exhaustive literature review.",
+    "No quantitative performance, security, or business outcome guarantees."
+  ],
+  "prepared_at": "2026-10-21T00:00:00Z",
+  "researched_at": null
+}

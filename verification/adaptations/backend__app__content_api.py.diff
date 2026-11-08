@@ -1,0 +1,93 @@
+--- original/backend/app/content_api.py
++++ standalone/backend/app/content_api.py
+@@ -9,14 +9,13 @@
+ from sqlalchemy.exc import IntegrityError
+ from sqlalchemy.orm import Session
+ 
+-from .contracts import PermanentDeleteRequest, PermanentDeleteResult, ContentTrashState, GeneratedBatch, GenerationRequest, JobView, JobPage, JobSummary, JobStatus, ResearchReport, RetryRequest, RevisionRequest, TemplateView, PlatformPreset
++from .contracts import ContentTrashState, GeneratedBatch, GenerationRequest, JobView, JobPage, JobSummary, JobStatus, ResearchReport, RetryRequest, RevisionRequest, TemplateView, PlatformPreset
+ from .agents.revision import NaturalRevisionRequest
+ from .templates.platforms import PRESETS
+ from .templates import TEMPLATES
+ from .models import Campaign, ContentItem, ContentVersion, GenerationJob, ResearchRun, now_iso
+ from .services.providers import ProviderError
+ from .workflow import digest
+-from .services.content_deletion import permanently_delete
+ from .contracts import Contract
+ from threading import BoundedSemaphore
+ from pydantic import Field
+@@ -83,9 +82,8 @@
+ 
+ 
+ def version_view(item, version, db):
+-    from .approval_api import review
+-    approval_status=review(db,item,version).approval_status
+-    return {'id':item.id,'version_id':version.id,'version_number':version.version_number,'created_at':version.created_at,**version.snapshot,'approval_status':approval_status,**ContentTrashState(id=item.id,trashed_at=item.trashed_at).model_dump(mode='json')}
++    approval_status='unapproved'
++    return {'id':item.id,'version_id':version.id,'version_number':version.version_number,'created_at':version.created_at,**version.snapshot,'approval_status':approval_status,'publishing_status':'not_published',**ContentTrashState(id=item.id,trashed_at=item.trashed_at).model_dump(mode='json')}
+ 
+ 
+ @router.get('/research-reports/{report_id}',response_model=ResearchReport)
+@@ -245,41 +243,12 @@
+         return {'items':[version_view(item,version,db) for item,version in rows],'total':total,'page':page,'limit':limit}
+ 
+ 
+-@router.post('/content/{item_id}/delete-permanently', response_model=PermanentDeleteResult)
+-def delete_content(item_id:UUID, payload:PermanentDeleteRequest, request:Request):
+-    workflow=request.app.state.workflow
+-    pending=permanently_delete(request.app.state.engine,workflow.assets.root,str(item_id),str(payload.version_id),workflow.active_jobs)
+-    return PermanentDeleteResult(id=item_id,cleanup_pending=pending)
+-
+-
+-@router.post('/content/{item_id}/trash', response_model=ContentTrashState)
+-def trash_content(item_id:UUID, request:Request):
+-    return set_trash(item_id, request, True)
+-
+-
+-@router.post('/content/{item_id}/restore', response_model=ContentTrashState)
+-def restore_content(item_id:UUID, request:Request):
+-    return set_trash(item_id, request, False)
+-
+-
+-def set_trash(item_id, request, trashed):
+-    with Session(request.app.state.engine) as db:
+-        db.connection().exec_driver_sql('BEGIN IMMEDIATE')
+-        item=db.get(ContentItem,str(item_id))
+-        if not item or item.deleted_at:
+-            raise HTTPException(404,'Content not found.')
+-        if db.scalar(select(GenerationJob.id).where(GenerationJob.family_id==item.family_id,GenerationJob.status.in_(['queued','running'])).limit(1)):
+-            raise HTTPException(409,'Wait for active generation or editing to finish before moving or restoring content.')
+-        if trashed and not item.trashed_at:
+-            from .approval_api import review
+-            from .models import Approval
+-            current=review(db,item,db.get(ContentVersion,item.current_version_id))
+-            latest=next((h for h in current.history if str(h.version_id)==item.current_version_id),None)
+-            if latest and latest.decision=='approve':
+-                db.add(Approval(version_id=item.current_version_id,payload_digest=current.payload_digest,decision='revoke',reviewer='Application',reason='Approval revoked when content moved to Trash.'))
+-        item.trashed_at=(item.trashed_at or now_iso()) if trashed else None
+-        db.commit()
+-        return ContentTrashState(id=item.id,trashed_at=item.trashed_at)
++
++
++
++
++
++
+ 
+ 
+ @router.get('/content/{item_id}')
+@@ -348,9 +317,11 @@
+             snapshot=saved,payload_digest=digest(saved))
+         db.add(version);db.flush()
+         item.current_version_id=version.id
+-        from .approval_api import review
+-        checked=review(db,item,version,request.app.state.workflow.assets)
+-        if checked.blockers: raise HTTPException(409,'Cannot restore this version: '+' '.join(checked.blockers))
++        # Verify saved render integrity locally; no approval/publishing subsystem is included.
++        try:
++            for asset_id in saved.get('renders', []): request.app.state.workflow.assets.read(asset_id)
++        except (ProviderError, OSError):
++            raise HTTPException(409, 'A saved render is missing or failed its integrity check.') from None
+         job.results=[{'item_id':item.id,'version_id':version.id,'version_number':version.version_number,'restored_from_version_number':source.version_number}]
+         db.commit()
+         return VersionRestoreResult(item_id=item.id,version_id=version.id,version_number=version.version_number,restored_from_version_id=source.id)

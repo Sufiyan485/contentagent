@@ -1,0 +1,66 @@
+{
+  "schema_version": "1",
+  "id": "10000000-0000-4000-8000-000000000001",
+  "origin": "demo",
+  "topic": "Introduction to Machine Learning",
+  "summary": "Beginner-friendly explanations of learning from examples, regression, and classification.",
+  "sources": [
+    {
+      "id": "s1",
+      "url": "https://developers.google.com/machine-learning/intro-to-ml/what-is-ml",
+      "title": "What is Machine Learning?",
+      "publisher": "Google for Developers",
+      "published_at": null,
+      "retrieved_at": "2026-10-21T00:00:00Z"
+    }
+  ],
+  "claims": [
+    {
+      "id": "c1",
+      "text": "ML models can learn from examples to make predictions.",
+      "verification_status": "supported",
+      "verification_method": "Manually checked against the linked source on 2026-10-21; not independent empirical verification.",
+      "evidence": [
+        {
+          "source_id": "s1",
+          "excerpt": "to make useful predictions or generate content",
+          "locator": "Definition",
+          "relation": "supports"
+        }
+      ],
+      "limitations": [
+        "Source support does not guarantee universal applicability."
+      ]
+    },
+    {
+      "id": "c2",
+      "text": "Regression estimates numerical values; classification assigns categories.",
+      "verification_status": "supported",
+      "verification_method": "Manually checked against the linked source on 2026-10-21; not independent empirical verification.",
+      "evidence": [
+        {
+          "source_id": "s1",
+          "excerpt": "A regression model predicts a numeric value.",
+          "locator": "Regression",
+          "relation": "supports"
+        }
+      ],
+      "limitations": [
+        "Source support does not guarantee universal applicability."
+      ]
+    }
+  ],
+  "content_opportunities": [
+    "Explain ML with a weather-prediction analogy.",
+    "Compare numerical predictions with category predictions."
+  ],
+  "warnings": [
+    "Manually prepared demo report; no live Research Agent was used."
+  ],
+  "limitations": [
+    "Introductory material, not an exhaustive literature review.",
+    "No quantitative performance, security, or business outcome guarantees."
+  ],
+  "prepared_at": "2026-10-21T00:00:00Z",
+  "researched_at": null
+}

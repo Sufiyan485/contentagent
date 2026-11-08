@@ -1,0 +1,14 @@
+alembic==1.20.0
+fastapi==0.156.8
+httpx==0.28.1
+langgraph==1.2.16
+langsmith==0.14.11
+onnxruntime==1.31.0
+pillow==13.0.0
+playwright==1.64.0
+pydantic==2.14.1
+pydantic-settings==2.16.1
+pytest==9.1.1
+rapidocr==3.10.0
+SQLAlchemy==2.1.5
+uvicorn==0.54.0

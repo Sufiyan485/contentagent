@@ -1,0 +1,11 @@
+{
+  "root_is_standalone": true,
+  "database_created": true,
+  "normal_worker_startup_and_shutdown": true,
+  "seeded_reports": 0,
+  "generation_jobs": 0,
+  "content_items": 0,
+  "own_port_origin_allowed": true,
+  "untrusted_origin_rejected": true,
+  "external_network_blocked": true
+}

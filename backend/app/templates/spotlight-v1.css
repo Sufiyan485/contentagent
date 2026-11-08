@@ -1,0 +1,8 @@
+.shade { background: rgba(5,12,28,.18); }
+.content { background:rgba(5,12,28,.84); inset: 54px; padding: 36px; border: 2px solid #ffffff55; text-align: center; align-items: center; }
+.brand { width: 100%; padding-bottom: 24px; border-bottom: 5px solid var(--brand-color); }
+.label { margin-top: 48px; }
+.copy { width: 100%; max-width: 800px; padding-top: 30px; }
+h1 { letter-spacing: -1.5px; }
+.cta { width: 100%; max-width: 800px; margin: 20px 0 26px; }
+.footer { width: 100%; }

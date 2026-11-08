@@ -1,0 +1,15 @@
+--- original/backend/tests/test_content.py
++++ standalone/backend/tests/test_content.py
+@@ -78,12 +78,6 @@
+         image_id = history[0]['renders'][0]
+         image = client.get(f'/api/v1/assets/{image_id}').content
+         assert image.startswith(b'\x89PNG')
+-        path=f"/api/v1/content/{saved['id']}"
+-        assert client.post(path+'/trash',json={}).status_code == 200
+-        assert client.get('/api/v1/content').json()['total'] == 0
+-        assert client.get(f'/api/v1/assets/{image_id}').content == image
+-        assert client.post(path+'/restore',json={}).status_code == 200
+-        assert client.get(path+'/versions').json() == history
+     with TestClient(create_app(settings, start_worker=False)) as client:
+         assert client.get(f"/api/v1/content/{saved['id']}/versions").json() == history
+         assert client.get(f'/api/v1/assets/{image_id}').content == image
